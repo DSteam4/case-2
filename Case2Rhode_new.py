@@ -75,6 +75,12 @@ arr_map_structure  = [os.getcwd() + map for map in   ['/Data','/Data/raw','/Data
 # # 2 Import data
 
 st.header("Analyse van de data")
+st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: ziekteverzuim volgens werknemers; beroep en fysieke arbeidsbelasting werknemers; beroep.''')
+st.subheader('Kwaliteit van de dataset')
+st.markdown('''De dataset ziekteverzuim bevat data van het jaar 2014 tot het jaar 2021. De dataset is ontstaan uit een enquête. Deze dataset is gecombineerd met de dataset fysieke arbeidsbelasting werknemers. Dit is gedaan op de variabelen beroep en perioden. De dataset fysieke arbeidsbelasting komt net als de andere dataset uit 2014 tot 2020. Er is middels een enquête informatie gewonnen. ''')
+st.subheader('Variabelen uit de dataset')
+st.markdown('''De belangrijke variabelen in deze datasets zijn Beroep, Perioden en Ziekteverzuimpercentage. De variabele beroep zijn ingedeeld in beroepsklasse. Die klasse zijn weer in gedeeld in beroepssegment en dat per beroep. De perioden zijn ingedeeld in jaren.  Het ziekteverzuimpercentage is het aantal ziektedagen die een werknemer heeft opgenomen in procenten van het totaal aantal beschikbare werkdagen. ''')
+
 # Functie get_odata wordt gedefinieerd.  
 # Credits: https://www.cbs.nl/nl-nl/onze-diensten/open-data/open-data-v4/snelstartgids-odata-v4
 
