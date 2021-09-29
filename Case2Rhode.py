@@ -206,7 +206,7 @@ fysiekearbeidsbelasting.to_csv(arr_map_structure[1]+'_fysiekearbeidsbelasting.cs
 # In[18]:
 
 
-whos
+
 
 
 # ## 3.2 EDA per dataframe
