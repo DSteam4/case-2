@@ -618,12 +618,12 @@ df_beroepsklasse_groupby = df_beroepsklasse.groupby('Beroep').mean()
 fysiekearbeid = df_beroepsklasse_groupby.columns.tolist()[13:-1]
 fysiekearbeid_labels = list(labeldict.values())[13:-1]
 
-fig = go.Figure()
+fig2 = go.Figure()
 
 j = 0
 dropdown_buttons = []
 for i in fysiekearbeid:
-    fig.add_trace(go.Bar(x = df_beroepsklasse_groupby.index, y = df_beroepsklasse_groupby[i],
+    fig2.add_trace(go.Bar(x = df_beroepsklasse_groupby.index, y = df_beroepsklasse_groupby[i],
                         name = i, text=df_beroepsklasse_groupby[i]))
 
     dropdown_buttons.append({'label':fysiekearbeid_labels[j],
@@ -633,8 +633,8 @@ for i in fysiekearbeid:
                                                 'range':[0, df_beroepsklasse_groupby[fysiekearbeid].max().max()+10]}}]})
     j += 1
 
-fig.update_traces(texttemplate='%{text:.1f}', textposition='outside')
-fig.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
+fig2.update_traces(texttemplate='%{text:.1f}', textposition='outside')
+fig2.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
                                    'x': 1, 'y': 1.2}]},
                   annotations = [{'text':"Fysiekse arbeidsbelasting", 'font_size':15,
                                 'x': 1, 'xref':"paper", 'y':1.3, 'yref':"paper",
@@ -642,7 +642,7 @@ fig.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
                   showlegend = False,
                   height = 800)
 
-st.plotly_chart(fig)
+st.plotly_chart(fig2)
 
 
 # In[ ]:
