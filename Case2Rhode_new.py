@@ -559,8 +559,11 @@ fig.update_layout(legend_title = 'Beroepsklasse')
 
 st.plotly_chart(fig)
 
-st.markdown('Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.')
-st.text('')
+st.markdown('Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.\
+Ligging\
+
+Test')
+st.markdown('')
 st.text('Ligging')
 st.text('Het is duidelijk te zien dat de boxplots van Openbaar bestuur, veiligheid en justitie (mediaan: 5,1%) en Zorg en welzijn beroepen (mediaan 5,4%) hoger ligt dan de rest.')
 st.text('De beroepsklasse Openbaar bestuur, veiligheid en justitie bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.')
