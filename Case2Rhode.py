@@ -117,7 +117,7 @@ DataProperties_zv
 zv_uds_url = ziekteverzuim_api.iloc[1, 1]
 
 zv_uds = get_odata(zv_uds_url)
-zv_uds.head()
+zv_uds
 
 
 # In[9]:
