@@ -532,7 +532,7 @@ labeldict_breaks = {'Perioden':'Jaar',
 st.header('Visualisatie van de data')
 # In[40]:
 
-fig = px.box(data_frame = beroepdata, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
+fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
             color = 'Perioden')
 fig.show()
 
