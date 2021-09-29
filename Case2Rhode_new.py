@@ -418,7 +418,7 @@ df_beroepsniveau = df.iloc[id_beroepsniveau]
 df_beroepsklasse = df.iloc[id_beroepsklasse]
 df_beroepssegment = df.iloc[id_beroepssegment]
 df_beroep = df.iloc[id_beroep]'''
-st.code(code3, language = 'python)
+st.code(code3, language = 'python')
 
 # Ook maken we een dataset aan waarin zowel 'Beroep', 'Beroepssegment' als 'Beroepsklasse' een variabele is.
 
@@ -444,7 +444,7 @@ df_beroepssegment['ID3'] = df_beroepssegment['Beroep'].str.extract('(^\d{3})')
 
 # Verkrijg de twee cijfers uit de kolom 'Beroepsklasse' en stop deze in een nieuwe kolom
 df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')'''
-st.code(code4, language = 'python)
+st.code(code4, language = 'python')
         
 # In[34]:
 
