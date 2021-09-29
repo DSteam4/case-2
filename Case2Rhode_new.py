@@ -494,7 +494,7 @@ df_beroep_segklas.drop(labels=['Beroep_y', 'ID3'], axis = 1, inplace = True)
 df_beroep_segklas.insert(1, 'Beroepssegment', segment)'''
 st.code(code6, language = 'python')
 
-st.table(df_beroep_segklas.head()) # Laat de eerste 5 waarnemingen zien
+st.write(df_beroep_segklas.head()) # Laat de eerste 5 waarnemingen zien
 
 
 # In[36]:
