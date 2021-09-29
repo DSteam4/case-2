@@ -35,8 +35,6 @@ project_title = 'Blogpost_ziekteverzuim'
 
 # In[2]:
 
-!pip3 install plotly
-
 import pandas as pd
 import os
 import requests
