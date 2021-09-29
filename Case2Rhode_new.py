@@ -254,9 +254,17 @@ print(fysiekearbeidsbelasting.info())
 # In[21]:
 
 
-df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting, how = 'outer', on = ['Beroep', 'Perioden'], validate = 'one_to_one')
+df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
+                                how = 'outer',
+                                on = ['Beroep', 'Perioden'],
+                                validate = 'one_to_one')
 print(df_merged.columns)
 
+code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
+                                how = 'outer',
+                                on = ['Beroep', 'Perioden'],
+                                validate = 'one_to_one')'''
+st.code(code2, language = 'python')
 
 # ### 3.2.1 Kolommen splitsen / verwijderen / hernoemen
 
@@ -397,6 +405,20 @@ df_beroepsklasse = df.iloc[id_beroepsklasse]
 df_beroepssegment = df.iloc[id_beroepssegment]
 df_beroep = df.iloc[id_beroep]
 
+code3 = '''# Index getallen per 'level' in een lijst zetten
+id_totaal = list(map(int, df.index[df['Beroep'].str.contains('Totaal')]))
+id_beroepsniveau = list(map(int, df.index[df['Beroep'].str.contains('Beroepsniveau')]))
+id_beroepsklasse = list(map(int, df.index[df['Beroep'].str.contains('^\d{2}\s')]))
+id_beroepssegment = list(map(int, df.index[df['Beroep'].str.contains('^\d{3}\s')]))
+id_beroep = list(map(int, df.index[df['Beroep'].str.contains('^\d{4}\s')]))
+
+# Dataframes aanmaken per 'level'
+df_totaal = df.iloc[id_totaal]
+df_beroepsniveau = df.iloc[id_beroepsniveau]
+df_beroepsklasse = df.iloc[id_beroepsklasse]
+df_beroepssegment = df.iloc[id_beroepssegment]
+df_beroep = df.iloc[id_beroep]'''
+st.code(code3, language = 'python)
 
 # Ook maken we een dataset aan waarin zowel 'Beroep', 'Beroepssegment' als 'Beroepsklasse' een variabele is.
 
@@ -413,7 +435,17 @@ df_beroepssegment['ID3'] = df_beroepssegment['Beroep'].str.extract('(^\d{3})')
 # Verkrijg de twee cijfers uit de kolom 'Beroepsklasse' en stop deze in een nieuwe kolom
 df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')
 
+code4 = '''# Verkrijg de eerste twee en eerste 3 cijfers uit de kolom 'Beroep' en stop deze in nieuwe kolommen
+df_beroep['ID2'] = df_beroep['Beroep'].str.extract('(^\d{2})')
+df_beroep['ID3'] = df_beroep['Beroep'].str.extract('(^\d{3})')
 
+# Verkrijg de drie cijfers uit de kolom 'Beroepssegment' en stop deze in een nieuwe kolom
+df_beroepssegment['ID3'] = df_beroepssegment['Beroep'].str.extract('(^\d{3})')
+
+# Verkrijg de twee cijfers uit de kolom 'Beroepsklasse' en stop deze in een nieuwe kolom
+df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')'''
+st.code(code4, language = 'python)
+        
 # In[34]:
 
 
@@ -425,6 +457,14 @@ df_bk = df_beroepsklasse[['Beroep','ID2']]
 df_sm.drop_duplicates(inplace = True)
 df_bk.drop_duplicates(inplace = True)
 
+code5 = '''# Pak de kolommen Beroep en ID(2/3)
+df_sm = df_beroepssegment[['Beroep','ID3']]
+df_bk = df_beroepsklasse[['Beroep','ID2']]
+
+# Drop duplicates om een dataframe te krijgen met unieke combinaties
+df_sm.drop_duplicates(inplace = True)
+df_bk.drop_duplicates(inplace = True)'''
+st.code(code5, language = 'python')
 
 # In[35]:
 
@@ -441,7 +481,20 @@ segment = df_beroep_segklas['Beroep_y']
 df_beroep_segklas.drop(labels=['Beroep_y', 'ID3'], axis = 1, inplace = True)
 df_beroep_segklas.insert(1, 'Beroepssegment', segment)
 
-df_beroep_segklas.head(50) # Laat de eerste 50 waarnemingen zien
+code6 = '''# Merge beroep met de unieke combinaties van beroepsklasse
+df_beroep_klasse = df_beroep.merge(df_bk, on = 'ID2', validate = 'many_to_one', suffixes = ['', '_y'])
+klasse = df_beroep_klasse['Beroep_y']
+df_beroep_klasse.drop(labels=['Beroep_y', 'ID2'], axis = 1, inplace = True)
+df_beroep_klasse.insert(1, 'Beroepsklasse', klasse)
+
+# Merge de verkregen dataframe met de unieke combinaties van beroepssegment
+df_beroep_segklas = df_beroep_klasse.merge(df_sm, on = 'ID3', validate = 'many_to_one', suffixes = ['', '_y'])
+segment = df_beroep_segklas['Beroep_y']
+df_beroep_segklas.drop(labels=['Beroep_y', 'ID3'], axis = 1, inplace = True)
+df_beroep_segklas.insert(1, 'Beroepssegment', segment)'''
+st.code(code6, language = 'python')
+
+st.table(df_beroep_segklas.head()) # Laat de eerste 5 waarnemingen zien
 
 
 # In[36]:
