@@ -596,6 +596,13 @@ fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemer
 
 st.plotly_chart(fig)
 
+st.markdown('In de vorige visualisatie was het ziekteverzuimpercentage per beroepsgroep te zien over de jaren 2014 tot en met 2020. In bovenstaande visualisatie zijn deze gegevens iets specifieker weergegeven, namelijk per beroep (elk punt is een beroep) en per jaar (hiervoor wordt de slider gebruikt). De kleuren van de punten geven aan in welke beroepsklasse dit beroep valt.')
+st.markdown('In de legenda mist de beroepsklasse Creatieve en taalkundige beroepen. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.')
+st.markdown('')
+st.markdown('De animatie van de slider laat zien dat de puntenwolk elk jaar iets hoger komt te liggen. Ook is het interessant om te zien dat de spreiding van de puntenwolk groter is in 2020, als je deze vergelijkt met de puntenwolk van 2014.')
+st.markdown('')
+st.markdown('Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (Pedagogische beroepen), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen Leidsters kinderopvang en onderwijsassistenten. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.')
+
 
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
 # <font color = 'red'> Hierdoor komen de kleuren niet overeen met de kleuren van het vorige plaatje in de legenda.
