@@ -530,7 +530,7 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
 
 st.plotly_chart(fig)
 
-df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", "RegelmatigVeelKrachtZetten_1", "InOngemakkelijkeWerkhoudingWerken_20"]].corr()
+st.write(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", "RegelmatigVeelKrachtZetten_1", "InOngemakkelijkeWerkhoudingWerken_20"]].corr())
 
 
 # <font color = 'red'> Trompetvorm tussen ziekteverzuimpercentage - ongemakkelijke werkhouding en ziekteverzuimpercentage - veel kracht verzetten. Ook sterke samenhang te zien tussen veel kracht verzetten en ongemakkelijke werkhouding.
