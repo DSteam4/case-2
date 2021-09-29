@@ -57,7 +57,7 @@ st.title("Blogpost ziekteverzuim")
 # In[3]:
 
 
-print("Current working directory: {0}".format(os.getcwd()))
+#print("Current working directory: {0}".format(os.getcwd()))
 
 
 # Create project structure
