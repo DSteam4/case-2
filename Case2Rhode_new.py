@@ -372,6 +372,19 @@ print(df.isnull().sum()) # Missende waarden checken
 
 # Er zijn aardig wat missende waarden te zien
 
+st.subheader('Data manipuleren om nieuwe variabelen te krijgen')
+st.markdown('''De kolom *Beroep* bevat nu 5 verschillende soorten groepen.
+
+Allereerst hebben we *Totaal* en *Beroepsniveau*.
+Verder wordt *Beroep* (aangeduid met een 4-digit cijfer) onderverdeeld in *Beroepssegment* (aangeduid met een 3-digit cijfer) en wordt dat weer onderverdeeld in *Beroepsklasse* (aangeduid met een 2-digit cijfer).
+
+Ter verduidelijking:
+01 Beroepsklasse
+011 Beroepssegment
+0111 Beroep
+
+We willen uiteindelijk een dataset waarin de kolom *Beroep* alleen de beroepen (4-digits) bevat en de beroepssegmenten en -klassen in een eigen kolom staan.''')
+
 # **Dataset opsplitsen**
 
 # De kolom 'Beroep' bevat een soort levelsysteem.  
@@ -390,6 +403,7 @@ print(df.isnull().sum()) # Missende waarden checken
 
 # In[32]:
 
+st.markdown('Stap 1: Splits de dataset op in 5 datasets (totaal, beroepsniveau, beroepsklasse, beroepssegment, beroep)')
 
 # Index getallen per 'level' in een lijst zetten
 id_totaal = list(map(int, df.index[df['Beroep'].str.contains('Totaal')]))
@@ -423,7 +437,7 @@ st.code(code3, language = 'python')
 # Ook maken we een dataset aan waarin zowel 'Beroep', 'Beroepssegment' als 'Beroepsklasse' een variabele is.
 
 # In[33]:
-
+st.markdown('Stap 2: Verkrijg de cijfers van de beroepen, beroepssegmenten en beroepsklassen en stop deze in nieuwe kolommen (zodat we kunnen daarop kunnen mergen)')
 
 # Verkrijg de eerste twee en eerste 3 cijfers uit de kolom 'Beroep' en stop deze in nieuwe kolommen
 df_beroep['ID2'] = df_beroep['Beroep'].str.extract('(^\d{2})')
@@ -447,7 +461,7 @@ df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')'''
 st.code(code4, language = 'python')
         
 # In[34]:
-
+st.markdown('Stap 3: Verwijder van de datasets met betrekking tot beroepssegment en beroepsklasse de duplicates, zodat elk beroepssegment of -klasse maar één keer voorkomt (en we kunnen mergen als een many_to_one)')
 
 # Pak de kolommen Beroep en ID(2/3)
 df_sm = df_beroepssegment[['Beroep','ID3']]
@@ -467,7 +481,7 @@ df_bk.drop_duplicates(inplace = True)'''
 st.code(code5, language = 'python')
 
 # In[35]:
-
+st.markdown('Stap 4: Merge de drie datasets tot een dataset met als eerste drie kolommen: *Beroep*, *Beroepssegment* en *Beroepsklasse*.')
 
 # Merge beroep met de unieke combinaties van beroepsklasse
 df_beroep_klasse = df_beroep.merge(df_bk, on = 'ID2', validate = 'many_to_one', suffixes = ['', '_y'])
@@ -636,18 +650,18 @@ st.plotly_chart(fig)
 st.markdown('''Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.
 
 **Ligging**
-Het is duidelijk te zien dat de boxplots van Openbaar bestuur, veiligheid en justitie (mediaan: 5,1%) en Zorg en welzijn beroepen (mediaan 5,4%) hoger ligt dan de rest.
-De beroepsklasse Openbaar bestuur, veiligheid en justitie bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.
-Het hoge percentage bij de beroepsklasse Zorg en welzijn beroepen zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.
+Het is duidelijk te zien dat de boxplots van *Openbaar bestuur, veiligheid en justitie* (mediaan: 5,1%) en *Zorg en welzijn beroepen* (mediaan 5,4%) hoger ligt dan de rest.
+De beroepsklasse *Openbaar bestuur, veiligheid en justitie* bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.
+Het hoge percentage bij de beroepsklasse *Zorg en welzijn beroepen* zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.
 
-Het is ook opvallend dat de beroepsklasse Managers (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse ICT beroepen (mediaan: 3,2%) die iets hoger ligt.
-Het lage percentage bij Managers doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).
-Bij de beroepsklasse ICT beroepen is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).
+Het is ook opvallend dat de beroepsklasse *Managers* (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse *ICT beroepen* (mediaan: 3,2%) die iets hoger ligt.
+Het lage percentage bij *Managers* doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).
+Bij de beroepsklasse *ICT beroepen* is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).
 
 **Spreiding**
-De spreiding van Beroepsklasse overig valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.
-De beroepsklasse Creatieve en taalkundige beroepen heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: Auteurs en kunstenaars en Vakspecialisten op artistiek en cultureel gebied.
-De kleine spreiding van de Pedagogische beroepen valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: Docenten, Sportinstructeurs en Leidsters kinderopvang en onderwijs. Het beroepssegment Sportinstructeurs verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
+De spreiding van *Beroepsklasse overig* valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.
+De beroepsklasse *Creatieve en taalkundige beroepen* heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: *Auteurs en kunstenaars* en *Vakspecialisten op artistiek en cultureel gebied*.
+De kleine spreiding van de *Pedagogische beroepen* valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: *Docenten*, *Sportinstructeurs* en *Leidsters kinderopvang en onderwijs*. Het beroepssegment *Sportinstructeurs* verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
 
 
 # Het valt op dat de ziekteverzuimpergentages van 'Openbaar bestuur, veiligheid en justitie' en 'Zorg en welzijn' hoger liggen dan de rest. 'Zorg en welzijn' ligt het hoogst.
@@ -669,11 +683,11 @@ fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemer
 st.plotly_chart(fig)
 
 st.markdown('''In de vorige visualisatie was het ziekteverzuimpercentage per beroepsgroep te zien over de jaren 2014 tot en met 2020. In bovenstaande visualisatie zijn deze gegevens iets specifieker weergegeven, namelijk per beroep (elk punt is een beroep) en per jaar (hiervoor wordt de slider gebruikt). De kleuren van de punten geven aan in welke beroepsklasse dit beroep valt.
-In de legenda mist de beroepsklasse Creatieve en taalkundige beroepen. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.
+In de legenda mist de beroepsklasse *Creatieve en taalkundige beroepen*. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.
 
 De animatie van de slider laat zien dat de puntenwolk elk jaar iets hoger komt te liggen. Ook is het interessant om te zien dat de spreiding van de puntenwolk groter is in 2020, als je deze vergelijkt met de puntenwolk van 2014.
 
-Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (Pedagogische beroepen), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen Leidsters kinderopvang en onderwijsassistenten. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.''')
+Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (*Pedagogische beroepen*), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen *Leidsters kinderopvang en onderwijsassistenten*. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.''')
 
 
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
