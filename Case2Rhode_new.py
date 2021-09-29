@@ -583,6 +583,11 @@ labeldict_breaks = {'Perioden':'Jaar',
              'UurPerDagAanBeeldschermVoorWerk_22':'Gemiddeld aantal schermuren voor werk'}
 
 st.header('Visualisatie van de data')
+
+fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
+            color = 'Perioden')
+st.plotly_chart(fig)
+
 # In[40]:
 
 
