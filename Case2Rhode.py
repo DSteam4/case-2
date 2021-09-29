@@ -35,6 +35,7 @@ project_title = 'Blogpost_ziekteverzuim'
 
 # In[2]:
 
+
 import pandas as pd
 import os
 import requests
@@ -117,7 +118,7 @@ DataProperties_zv
 zv_uds_url = ziekteverzuim_api.iloc[1, 1]
 
 zv_uds = get_odata(zv_uds_url)
-zv_uds
+zv_uds.head()
 
 
 # In[9]:
@@ -203,6 +204,9 @@ fysiekearbeidsbelasting.to_csv(arr_map_structure[1]+'_fysiekearbeidsbelasting.cs
 # ## 3.1 Inspectie van de variabelen
 
 # In[18]:
+
+
+whos
 
 
 # ## 3.2 EDA per dataframe
