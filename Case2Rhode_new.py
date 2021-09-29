@@ -7,7 +7,7 @@
 
 
 project_title = 'Blogpost_ziekteverzuim'
-st.title("Blogpost ziekteverzuim")
+
 
 # Namen: Vincent Kemme (500838439), Rhodé Rebel (500819128), Amber van der Pol (500803136) en Oussama Abou <font color = 'red'>(...)
 
@@ -50,6 +50,7 @@ warnings.filterwarnings('ignore')
 import session_info
 session_info.show()
 
+st.title("Blogpost ziekteverzuim")
 
 # Set working directories
 
