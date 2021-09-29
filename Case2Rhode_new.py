@@ -546,7 +546,7 @@ fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers
                  title = 'Ziekteverzuimpercentage')
 fig.update_layout(legend_title = 'Beroepsklasse')
 
-fig.show()
+st.plotly_chart(fig)
 
 
 # Het valt op dat de ziekteverzuimpergentages van 'Openbaar bestuur, veiligheid en justitie' en 'Zorg en welzijn' hoger liggen dan de rest. 'Zorg en welzijn' ligt het hoogst.
@@ -565,7 +565,7 @@ fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
 
-fig.show()
+st.plotly_chart(fig)
 
 
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
@@ -594,7 +594,7 @@ fig.update_layout({'updatemenus':[{'active': True, 'type': 'buttons', 'buttons':
 fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(range=[0, 8], title = 'Ziekteverzuimpercentage')
 
-fig.show()
+st.plotly_chart(fig)
 
 
 # <font color = 'red'> Een legenda maken per kleur (beroepsklasse) lukt me niet.
@@ -630,7 +630,7 @@ fig.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
                   showlegend = False,
                   height = 800)
 
-fig.show()
+st.plotly_chart(fig)
 
 
 # In[ ]:
@@ -670,7 +670,7 @@ df_transpose.head()
 #                              'args': [{"visible":[x==i for x in beroepen]}]})
 #     j += 1
 
-# fig.show()
+# st.plotly_chart(fig)
 
 
 # In[ ]:
