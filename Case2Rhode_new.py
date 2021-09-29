@@ -648,44 +648,10 @@ st.plotly_chart(fig)
 # In[ ]:
 
 
-DataProperties_fa.iloc[7,1]
-
-
-# In[ ]:
-
-
-DataProperties_fa.iloc[9,1]
-
-
-# In[ ]:
-
-
 df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Beroepsklasse']).mean()
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
 
-
-# In[ ]:
-
-
-# beroepen = list(df_beroep_segklas['Beroep'].unique())
-# beroepsklassen = list(df_beroep_segklas['Beroepsklasse'].unique())
-# fig = go.Figure()
-
-# j = 0
-# dropdown_buttons = []
-# for i in beroepen:
-#     fig.add_trace(go.Bar(x = df_transpose.index, y = df_transpose[df_transpose['Beroep']==i]))
- 
-#     dropdown_buttons.append({'label':beroepen[j],
-#                              'method': 'update',
-#                              'args': [{"visible":[x==i for x in beroepen]}]})
-#     j += 1
-
-# st.plotly_chart(fig)
-
-
-# In[ ]:
 
 
 
