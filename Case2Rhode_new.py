@@ -68,7 +68,7 @@ print("Current working directory: {0}".format(os.getcwd()))
 arr_map_structure  = [os.getcwd() + map for map in   ['/Data','/Data/raw','/Data/clean','/Data/staging',
                       '/Data/temp','/Figs','/Figs/temp','/Docs','/Results','/Code'] ]
 
-[os.makedirs(map) for map in arr_map_structure if  not os.path.exists( map)]
+#[os.makedirs(map) for map in arr_map_structure if  not os.path.exists( map)]
 
 
 # # 2 Import data
