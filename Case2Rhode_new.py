@@ -530,7 +530,7 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
 
 st.plotly_chart(fig)
 
-st.write(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
+st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
                                     "RegelmatigVeelKrachtZetten_1", 
                                     "InOngemakkelijkeWerkhoudingWerken_20"]].corr().rename(columns={
   "ZiekteverzuimpercentageWerknemers_1": "Ziekteverzuimpercentage", 
