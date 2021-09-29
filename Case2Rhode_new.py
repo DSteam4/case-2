@@ -778,6 +778,8 @@ st.plotly_chart(fig2)
 df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Beroepsklasse']).mean()
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
+st.markdown(''' In de laatste barplot is de fysieke arbeidsbelasting per gevaar per beroepsklasse te zien. Door middel van de dropdown box is per gevaar te zien welke gevaar een hoog of laag arbeidsbelasting percentage heeft. Bij de eerste elf gevaren blijkt dat Agrarische, Technische en Logistieke beroepen een hoog percentage scoren. Uit de overige gevaren blijkt dat vaak specifieke beroepen een hoog percentage scoren.  Zo is de kans dat iemand van zorg en welzijn het snelst in contact komt met een besmet persoon het hoogst. 
+Tussen alle fysieke arbeidsbelasting variabelen zit twee keer de variabele ‘Percentage werknemers dat gevaarlijk werk uitvoert’. Eén keer tot 2018 en één keer vanaf 2018. Dit komt omdat de informatie tot 2018 op een andere manier is verkregen dan daarna. Te zien is dat het gemiddelde percentage vanaf 2018 hoger ligt dan het gemiddelde percentage tot 2018. Een mogelijke oorzaak zou kunnen zijn dat tot 2018 mensen met de hand konden aangeven of ze een gevaarlijk beroep uit voerden. Terwijl het vanaf 2018 zo was dat als men 1 van de 10 gevaren aanvinkte het automatisch viel onder gevaarlijk beroep.''')
 
 st.header('Conclusie')
 
