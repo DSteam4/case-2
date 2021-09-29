@@ -744,6 +744,10 @@ st.plotly_chart(fig)
 df_beroepsklasse_groupby = df_beroepsklasse.groupby('Beroep').mean()
 fysiekearbeid = df_beroepsklasse_groupby.columns.tolist()[13:-1]
 fysiekearbeid_labels = list(labeldict.values())[13:-1]
+st.markdown('''In deze barplot is het ziekteverzuimpercentage per beroepsklasse te zien. Via de button is het jaar 2019 en 2020 te zien. Door op een balkje te gaan staan is te zien welk beroep het is en hoe hoog het percentage is.
+In 2019 is te zien dat buschauffeurs en taxibestuurders een uitschieter zijn, met ongeveer 7%. Er is ook te zien dat algemeen directeuren een relatief lage uitval hebben met 1,5%. 
+In 2020 is te zien dat het percentage ziekteverzuim is toegenomen vergeleken met 2019. Hierin is te zien dat hulpkrachten in de bouw en industrie een relatief hoog percentage hebben namelijk 7,6%.  Net als in 2019 hebben algemeen directeuren een relatief laag uitval percentage met 1,1%. Dit percentage ligt lager dan in 2019. 
+Aan de hand van de barplot is dus het ziekteverzuimpercentage per beroepsklasse te zien. Uit de grafieken blijkt dat algemeen directeuren een relatief laag ziekteverzuimpercentage hebben. Er is niet duidelijk te zien welke beroepsklasse een relatief hoog ziekteverzuimpercentage hebben.''')
 
 fig2 = go.Figure()
 
