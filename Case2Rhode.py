@@ -34,7 +34,7 @@ project_title = 'Blogpost_ziekteverzuim'
 # Import packages
 
 # In[2]:
-
+import streamlit as st
 import pandas as pd
 import os
 import requests
