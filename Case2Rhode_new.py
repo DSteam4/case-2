@@ -608,7 +608,7 @@ fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'Ziekteverzuimp
             color = 'Perioden')
 st.plotly_chart(fig)
 
-st.markdown('''Boxplots jaren
+st.markdown('''
 Allereerst beginnen we met een boxplot waar alle banen bij elkaar gezet zijn. Er wordt puur gekeken naar het ziekteverzuimpercentage van werknemers per jaar, over de jaren 2014-2020. 
 
 In deze data lijkt een licht stijgende trend te zitten door de jaren heen. Kijkend naar de medianen zien we een stijging van 3.5% in 2014 naar 4.3% in 2020. Toch is het erg moeilijk om hier een duidelijke conclusie uit te trekken omdat de onzekerheid van de boxplots erg hoog is, en het zijn ook maar zeven jaren die getoond worden. 
@@ -632,7 +632,7 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
 
 st.plotly_chart(fig)
 
-st.markdown('''Spreidingsmatrix
+st.markdown('''
 Om een beter idee te krijgen van de verhoudingen tussen ziekteverzuim, werknemers die regelmatig veel kracht zetten en het percentage medewerkers dat in een ongemakkelijke houding werken is er een spreidingsmatrix opgesteld. Daaronder volgt een correlatiematrix die overeenkomt met de spreiding van de spreidingsmatrix. 
 
 Ten eerste het verband tussen ziekteverzuim en het percentage werknemers dat regelmatig veel kracht zet. Dit verband heeft iets weg van een toetervorm, wat zou betekenen dat het verband wel lineair is maar geen constante variantie heeft. In de correlatiematrix is te zien dat er een correlatie van 0,27 is tussen de twee variabelen. Een zwak tot medium verband dus. 
