@@ -431,7 +431,7 @@ df_beroep_segklas.head(50) # Laat de eerste 50 waarnemingen zien
 # In[36]:
 
 
-df_beroep_segklas.columns
+print(df_beroep_segklas.columns)
 
 
 # ### 3.2.4 Visuele data-analyse
