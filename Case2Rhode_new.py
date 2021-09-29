@@ -47,7 +47,6 @@ import streamlit as st
 import warnings
 warnings.filterwarnings('ignore')
 
-get_ipython().system('pip install session-info')
 import session_info
 session_info.show()
 
