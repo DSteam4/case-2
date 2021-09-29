@@ -123,7 +123,7 @@ print(DataProperties_zv)
 zv_uds_url = ziekteverzuim_api.iloc[1, 1]
 
 zv_uds = get_odata(zv_uds_url)
-zv_uds
+print(zv_uds)
 
 
 # In[9]:
@@ -140,7 +140,7 @@ zv_uds
 zv_tds_url = ziekteverzuim_api.iloc[2, 1]
 
 zv_tds = get_odata(zv_tds_url)
-zv_tds.head()
+print(zv_tds.head())
 
 
 # In[11]:
@@ -177,7 +177,7 @@ print(fysiekearbeidsbelasting_api)
 DataProperties_fa_url = fysiekearbeidsbelasting_api.iloc[3, 1]
 
 DataProperties_fa = get_odata(DataProperties_fa_url)[['Key', 'Description', 'Unit']]
-DataProperties_fa
+print(DataProperties_fa)
 
 
 # Laad de TypedDataSet in
@@ -188,7 +188,7 @@ DataProperties_fa
 fysiekearbeidsbelasting_url = fysiekearbeidsbelasting_api.iloc[2, 1]
 
 fysiekearbeidsbelasting = get_odata(fysiekearbeidsbelasting_url)
-fysiekearbeidsbelasting.head()
+print(fysiekearbeidsbelasting.head())
 
 
 # In[16]:
@@ -222,13 +222,13 @@ print("shape fysiekearbeidsbelasting: " + str(fysiekearbeidsbelasting.shape))
 # In[19]:
 
 
-ziekteverzuim.info()
+print(ziekteverzuim.info())
 
 
 # In[20]:
 
 
-fysiekearbeidsbelasting.info()
+print(fysiekearbeidsbelasting.info())
 
 
 # Beide datasets hebben de variabelen 'ID', 'Beroep' en 'Perioden'. We kunnen de datasets eventueel joinen op 'Beroep' en 'Perioden'.
@@ -239,7 +239,7 @@ fysiekearbeidsbelasting.info()
 
 
 df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting, how = 'outer', on = ['Beroep', 'Perioden'], validate = 'one_to_one')
-df_merged.columns
+print(df_merged.columns)
 
 
 # ### 3.2.1 Kolommen splitsen / verwijderen / hernoemen
@@ -255,7 +255,7 @@ beroep = r.json()
 beroep = beroep.get('value')
 beroep = pd.DataFrame.from_dict(beroep)
 beroep = beroep[['Key', 'Title']]
-beroep.head()
+print(beroep.head())
 
 
 # In[23]:
@@ -265,7 +265,7 @@ df_beroep = df_merged.merge(beroep, left_on = 'Beroep', right_on = 'Key', valida
 title_beroep = df_beroep['Title']
 df_beroep.drop(labels=['Beroep', 'Key', 'Title'], axis = 1, inplace = True)
 df_beroep.insert(1, 'Beroep', title_beroep)
-df_beroep.head()
+print(df_beroep.head())
 
 
 # Vervang de waarden van de kolom 'Perioden' met jaartallen.
