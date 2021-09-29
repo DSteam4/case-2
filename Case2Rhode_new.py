@@ -754,7 +754,7 @@ df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Bero
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
 
-
+st.header('Conclusie')
 
 
 
