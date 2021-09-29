@@ -57,7 +57,7 @@ st.title("Blogpost ziekteverzuim")
 # In[3]:
 
 
-#print("Current working directory: {0}".format(os.getcwd()))
+print("Current working directory: {0}".format(os.getcwd()))
 
 
 # Create project structure
@@ -112,7 +112,7 @@ print(ziekteverzuim_api)
 DataProperties_zv_url = ziekteverzuim_api.iloc[3, 1]
 
 DataProperties_zv = get_odata(DataProperties_zv_url)[['Key', 'Description', 'Unit']]
-DataProperties_zv
+print(DataProperties_zv)
 
 
 # Laad de UntypedDataSet in
