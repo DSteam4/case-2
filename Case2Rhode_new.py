@@ -129,7 +129,7 @@ zv_uds
 # In[9]:
 
 
-print(zv_uds.info())
+#print(zv_uds.info())
 
 
 # Laad de TypedDataSet in
