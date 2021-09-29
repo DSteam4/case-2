@@ -254,9 +254,17 @@ print(fysiekearbeidsbelasting.info())
 # In[21]:
 
 
-df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting, how = 'outer', on = ['Beroep', 'Perioden'], validate = 'one_to_one')
+df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
+                                how = 'outer',
+                                on = ['Beroep', 'Perioden'],
+                                validate = 'one_to_one')
 print(df_merged.columns)
 
+code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
+                                how = 'outer',
+                                on = ['Beroep', 'Perioden'],
+                                validate = 'one_to_one')'''
+st.code(code2, language = 'python')
 
 # ### 3.2.1 Kolommen splitsen / verwijderen / hernoemen
 
@@ -397,6 +405,20 @@ df_beroepsklasse = df.iloc[id_beroepsklasse]
 df_beroepssegment = df.iloc[id_beroepssegment]
 df_beroep = df.iloc[id_beroep]
 
+code3 = '''# Index getallen per 'level' in een lijst zetten
+id_totaal = list(map(int, df.index[df['Beroep'].str.contains('Totaal')]))
+id_beroepsniveau = list(map(int, df.index[df['Beroep'].str.contains('Beroepsniveau')]))
+id_beroepsklasse = list(map(int, df.index[df['Beroep'].str.contains('^\d{2}\s')]))
+id_beroepssegment = list(map(int, df.index[df['Beroep'].str.contains('^\d{3}\s')]))
+id_beroep = list(map(int, df.index[df['Beroep'].str.contains('^\d{4}\s')]))
+
+# Dataframes aanmaken per 'level'
+df_totaal = df.iloc[id_totaal]
+df_beroepsniveau = df.iloc[id_beroepsniveau]
+df_beroepsklasse = df.iloc[id_beroepsklasse]
+df_beroepssegment = df.iloc[id_beroepssegment]
+df_beroep = df.iloc[id_beroep]'''
+st.code(code3, language = 'python')
 
 # Ook maken we een dataset aan waarin zowel 'Beroep', 'Beroepssegment' als 'Beroepsklasse' een variabele is.
 
@@ -413,7 +435,17 @@ df_beroepssegment['ID3'] = df_beroepssegment['Beroep'].str.extract('(^\d{3})')
 # Verkrijg de twee cijfers uit de kolom 'Beroepsklasse' en stop deze in een nieuwe kolom
 df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')
 
+code4 = '''# Verkrijg de eerste twee en eerste 3 cijfers uit de kolom 'Beroep' en stop deze in nieuwe kolommen
+df_beroep['ID2'] = df_beroep['Beroep'].str.extract('(^\d{2})')
+df_beroep['ID3'] = df_beroep['Beroep'].str.extract('(^\d{3})')
 
+# Verkrijg de drie cijfers uit de kolom 'Beroepssegment' en stop deze in een nieuwe kolom
+df_beroepssegment['ID3'] = df_beroepssegment['Beroep'].str.extract('(^\d{3})')
+
+# Verkrijg de twee cijfers uit de kolom 'Beroepsklasse' en stop deze in een nieuwe kolom
+df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')'''
+st.code(code4, language = 'python')
+        
 # In[34]:
 
 
@@ -425,6 +457,14 @@ df_bk = df_beroepsklasse[['Beroep','ID2']]
 df_sm.drop_duplicates(inplace = True)
 df_bk.drop_duplicates(inplace = True)
 
+code5 = '''# Pak de kolommen Beroep en ID(2/3)
+df_sm = df_beroepssegment[['Beroep','ID3']]
+df_bk = df_beroepsklasse[['Beroep','ID2']]
+
+# Drop duplicates om een dataframe te krijgen met unieke combinaties
+df_sm.drop_duplicates(inplace = True)
+df_bk.drop_duplicates(inplace = True)'''
+st.code(code5, language = 'python')
 
 # In[35]:
 
@@ -441,7 +481,20 @@ segment = df_beroep_segklas['Beroep_y']
 df_beroep_segklas.drop(labels=['Beroep_y', 'ID3'], axis = 1, inplace = True)
 df_beroep_segklas.insert(1, 'Beroepssegment', segment)
 
-df_beroep_segklas.head(50) # Laat de eerste 50 waarnemingen zien
+code6 = '''# Merge beroep met de unieke combinaties van beroepsklasse
+df_beroep_klasse = df_beroep.merge(df_bk, on = 'ID2', validate = 'many_to_one', suffixes = ['', '_y'])
+klasse = df_beroep_klasse['Beroep_y']
+df_beroep_klasse.drop(labels=['Beroep_y', 'ID2'], axis = 1, inplace = True)
+df_beroep_klasse.insert(1, 'Beroepsklasse', klasse)
+
+# Merge de verkregen dataframe met de unieke combinaties van beroepssegment
+df_beroep_segklas = df_beroep_klasse.merge(df_sm, on = 'ID3', validate = 'many_to_one', suffixes = ['', '_y'])
+segment = df_beroep_segklas['Beroep_y']
+df_beroep_segklas.drop(labels=['Beroep_y', 'ID3'], axis = 1, inplace = True)
+df_beroep_segklas.insert(1, 'Beroepssegment', segment)'''
+st.code(code6, language = 'python')
+
+st.write(df_beroep_segklas.head()) # Laat de eerste 5 waarnemingen zien
 
 
 # In[36]:
@@ -532,9 +585,6 @@ labeldict_breaks = {'Perioden':'Jaar',
 st.header('Visualisatie van de data')
 # In[40]:
 
-fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
-            color = 'Perioden')
-fig.show()
 
 df_beroep_segklas_groupby = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Beroepsklasse']).mean()
 
@@ -568,9 +618,8 @@ st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1",
 # In[ ]:
 
 
-fig = px.box(data_frame = df_beroep_segklas, x = 'Beroep', y = 'ZiekteverzuimpercentageWerknemers_1',
+fig = px.box(data_frame = df_beroepsklasse, x = 'Beroep', y = 'ZiekteverzuimpercentageWerknemers_1',
             color = 'Beroep')
-
 
 fig.update_xaxes(title = 'Beroepsklasse')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
@@ -582,18 +631,18 @@ st.plotly_chart(fig)
 st.markdown('''Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.
 
 **Ligging**
-Het is duidelijk te zien dat de boxplots van *Openbaar bestuur, veiligheid en justitie* (mediaan: 5,1%) en *Zorg en welzijn* beroepen (mediaan 5,4%) hoger ligt dan de rest.
-De beroepsklasse *Openbaar bestuur, veiligheid en justitie* bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.
-Het hoge percentage bij de beroepsklasse *Zorg en welzijn* beroepen zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.
+Het is duidelijk te zien dat de boxplots van Openbaar bestuur, veiligheid en justitie (mediaan: 5,1%) en Zorg en welzijn beroepen (mediaan 5,4%) hoger ligt dan de rest.
+De beroepsklasse Openbaar bestuur, veiligheid en justitie bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.
+Het hoge percentage bij de beroepsklasse Zorg en welzijn beroepen zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.
 
-Het is ook opvallend dat de beroepsklasse *Managers* (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse *ICT beroepen* (mediaan: 3,2%) die iets hoger ligt.
-Het lage percentage bij *Managers* doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).
-Bij de beroepsklasse *ICT beroepen* is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).
+Het is ook opvallend dat de beroepsklasse Managers (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse ICT beroepen (mediaan: 3,2%) die iets hoger ligt.
+Het lage percentage bij Managers doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).
+Bij de beroepsklasse ICT beroepen is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).
 
 **Spreiding**
-De spreiding van *Beroepsklasse overig* valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.
-De beroepsklasse *Creatieve en taalkundige beroepen* heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: Auteurs en kunstenaars en Vakspecialisten op artistiek en cultureel gebied.
-De kleine spreiding van de *Pedagogische beroepen* valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: *Docenten*, *Sportinstructeurs* en *Leidsters kinderopvang en onderwijs*. Het beroepssegment *Sportinstructeurs* verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
+De spreiding van Beroepsklasse overig valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.
+De beroepsklasse Creatieve en taalkundige beroepen heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: Auteurs en kunstenaars en Vakspecialisten op artistiek en cultureel gebied.
+De kleine spreiding van de Pedagogische beroepen valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: Docenten, Sportinstructeurs en Leidsters kinderopvang en onderwijs. Het beroepssegment Sportinstructeurs verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
 
 
 # Het valt op dat de ziekteverzuimpergentages van 'Openbaar bestuur, veiligheid en justitie' en 'Zorg en welzijn' hoger liggen dan de rest. 'Zorg en welzijn' ligt het hoogst.
@@ -615,11 +664,11 @@ fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemer
 st.plotly_chart(fig)
 
 st.markdown('''In de vorige visualisatie was het ziekteverzuimpercentage per beroepsgroep te zien over de jaren 2014 tot en met 2020. In bovenstaande visualisatie zijn deze gegevens iets specifieker weergegeven, namelijk per beroep (elk punt is een beroep) en per jaar (hiervoor wordt de slider gebruikt). De kleuren van de punten geven aan in welke beroepsklasse dit beroep valt.
-In de legenda mist de beroepsklasse *Creatieve en taalkundige beroepen*. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.
+In de legenda mist de beroepsklasse Creatieve en taalkundige beroepen. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.
 
 De animatie van de slider laat zien dat de puntenwolk elk jaar iets hoger komt te liggen. Ook is het interessant om te zien dat de spreiding van de puntenwolk groter is in 2020, als je deze vergelijkt met de puntenwolk van 2014.
 
-Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (*Pedagogische beroepen*), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen *Leidsters kinderopvang en onderwijsassistenten*. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.''')
+Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (Pedagogische beroepen), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen Leidsters kinderopvang en onderwijsassistenten. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.''')
 
 
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
@@ -705,7 +754,6 @@ df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Bero
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
 
-
-
+st.header('Conclusie')
 
 
