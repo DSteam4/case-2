@@ -571,6 +571,17 @@ st.plotly_chart(fig)
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
 # <font color = 'red'> Hierdoor komen de kleuren niet overeen met de kleuren van het vorige plaatje in de legenda.
 
+fig = px.scatter(data_frame = df_beroepsklasse, x = 'UurPerDagAanBeeldschermVoorWerk_22', y = 'ZiekteverzuimpercentageWerknemers_1', 
+            color = 'Beroep')
+
+fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
+fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
+                 title = 'Ziekteverzuimpercentage')
+fig.update_layout(legend_title = 'verhouding schermcontact en ziekteverzuim')
+
+st.write(fig)
+
+
 # In[ ]:
 
 
