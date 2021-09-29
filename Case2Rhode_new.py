@@ -559,10 +559,8 @@ fig.update_layout(legend_title = 'Beroepsklasse')
 
 st.plotly_chart(fig)
 
-st.markdown('Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.\
-Ligging\
-
-Test')
+st.markdown('Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.\n
+Ligging')
 st.markdown('')
 st.text('Ligging')
 st.text('Het is duidelijk te zien dat de boxplots van Openbaar bestuur, veiligheid en justitie (mediaan: 5,1%) en Zorg en welzijn beroepen (mediaan 5,4%) hoger ligt dan de rest.')
