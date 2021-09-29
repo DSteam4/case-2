@@ -608,6 +608,14 @@ fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'Ziekteverzuimp
             color = 'Perioden')
 st.plotly_chart(fig)
 
+st.markdown('''Boxplots jaren
+Allereerst beginnen we met een boxplot waar alle banen bij elkaar gezet zijn. Er wordt puur gekeken naar het ziekteverzuimpercentage van werknemers per jaar, over de jaren 2014-2020. 
+
+In deze data lijkt een licht stijgende trend te zitten door de jaren heen. Kijkend naar de medianen zien we een stijging van 3.5% in 2014 naar 4.3% in 2020. Toch is het erg moeilijk om hier een duidelijke conclusie uit te trekken omdat de onzekerheid van de boxplots erg hoog is, en het zijn ook maar zeven jaren die getoond worden. 
+
+De komst van het Coronavirus is nog niet te zien op deze visualisatie. Met data van 2021 erbij zou dit misschien anders zijn, maar men lijkt zich juist net iets minder vaak ziek te melden in 2020 dan in 2019.  Dit zou kunnen komen door dat mensen voorzichtiger waren en over het algemeen minder ziek werden, of doordat mensen bij het thuiswerken zich minder snel ziek melden omdat er geen kans is dat ze collega’s besmetten.''') 
+
+
 # In[40]:
 
 
@@ -623,6 +631,18 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
                   legend_title = 'Beroepsklasse')
 
 st.plotly_chart(fig)
+
+st.markdown('''Spreidingsmatrix
+Om een beter idee te krijgen van de verhoudingen tussen ziekteverzuim, werknemers die regelmatig veel kracht zetten en het percentage medewerkers dat in een ongemakkelijke houding werken is er een spreidingsmatrix opgesteld. Daaronder volgt een correlatiematrix die overeenkomt met de spreiding van de spreidingsmatrix. 
+
+Ten eerste het verband tussen ziekteverzuim en het percentage werknemers dat regelmatig veel kracht zet. Dit verband heeft iets weg van een toetervorm, wat zou betekenen dat het verband wel lineair is maar geen constante variantie heeft. In de correlatiematrix is te zien dat er een correlatie van 0,27 is tussen de twee variabelen. Een zwak tot medium verband dus. 
+
+Tussen ziekteverzuimpercentage en werknemers die in een ongemakkelijke houding werken is een vergelijkbaar verband te zien. Weer heeft het iets weg van een toetervorm. Deze keer is de correlatie wel iets hoger, namelijk 0,35, maar nog steeds is dat absoluut geen sterk verband. 
+
+Wat opvallend is bij die twee spreidingsmatrices is dat vooral de technische- en de zorg en welzijn beroepen heel breed verdeeld zijn. Zij hebben bepaalde beroepen die een stuk meer kracht vergen en waar je in ongemakkelijkere houdingen staat dan gemiddeld. 
+
+Dan het derde plaatje, regelmatig kracht verzetten tegenover een ongemakkelijke werkhouding, hier zien we een sterke correlatie met een correlatiecoëfficiënt van 0,89. Een ongemakkelijke werkhouding lijkt dus te maken te hebben met het regelmatig veel kracht moeten zetten, of andersom. Hier lijken vooral technische beroepen de kroon te spannen met de zwaarste banen. Door deze hoge correlatie weten we ook dat we in latere figuren deze niet meer allebei met andere variabelen hoeven te vergelijken omdat je dan zeer waarschijnlijk tot dezelfde conclusie komt. 
+''')
 
 st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
                                     "RegelmatigVeelKrachtZetten_1", 
