@@ -94,8 +94,7 @@ def get_odata(target_url):
             
     return data
 
-code1 = 'def get_odata(target_url): data = pd.DataFrame() while target_url: r = requests.get(target_url).json() data = data.append(pd.DataFrame(r['value'])) if '@odata.nextLink' in r: target_url = r['@odata.nextLink'] else: target_url = None return data'
-st.code(code1, language = 'python')
+
 # ### 2.1 Ziekteverzuim volgens werknemers; beroep
 
 # In[6]:
