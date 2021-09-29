@@ -579,7 +579,7 @@ fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers
                  title = 'Ziekteverzuimpercentage')
 fig.update_layout(legend_title = 'verhouding schermcontact en ziekteverzuim')
 
-st.write(fig)
+st.plotly_chart(fig)
 
 
 # In[ ]:
