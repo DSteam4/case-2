@@ -75,7 +75,7 @@ arr_map_structure  = [os.getcwd() + map for map in   ['/Data','/Data/raw','/Data
 # # 2 Import data
 
 st.header("Analyse van de data")
-st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: ziekteverzuim volgens werknemers; beroep en fysieke arbeidsbelasting werknemers; beroep.''')
+st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*.''')
 st.subheader('Kwaliteit van de dataset')
 st.markdown('''De dataset ziekteverzuim bevat data van het jaar 2014 tot het jaar 2021. De dataset is ontstaan uit een enquête. Deze dataset is gecombineerd met de dataset fysieke arbeidsbelasting werknemers. Dit is gedaan op de variabelen beroep en perioden. De dataset fysieke arbeidsbelasting komt net als de andere dataset uit 2014 tot 2020. Er is middels een enquête informatie gewonnen. ''')
 st.subheader('Variabelen uit de dataset')
@@ -379,15 +379,15 @@ print(df.isnull().sum()) # Missende waarden checken
 # Er zijn aardig wat missende waarden te zien
 
 st.subheader('Data manipuleren om nieuwe variabelen te krijgen')
-st.markdown('''De kolom *Beroep* bevat nu 5 verschillende soorten groepen.
+st.markdown('''De kolom *Beroep* bevat nu 5 verschillende soorten groepen.  
 
-Allereerst hebben we *Totaal* en *Beroepsniveau*.
-Verder wordt *Beroep* (aangeduid met een 4-digit cijfer) onderverdeeld in *Beroepssegment* (aangeduid met een 3-digit cijfer) en wordt dat weer onderverdeeld in *Beroepsklasse* (aangeduid met een 2-digit cijfer).
+Allereerst hebben we *Totaal* en *Beroepsniveau*.  
+Verder wordt *Beroep* (aangeduid met een 4-digit cijfer) onderverdeeld in *Beroepssegment* (aangeduid met een 3-digit cijfer) en wordt dat weer onderverdeeld in *Beroepsklasse* (aangeduid met een 2-digit cijfer).  
 
-Ter verduidelijking:
-01 Beroepsklasse
-011 Beroepssegment
-0111 Beroep
+Ter verduidelijking:  
+01 Beroepsklasse  
+011 Beroepssegment  
+0111 Beroep  
 
 We willen uiteindelijk een dataset waarin de kolom *Beroep* alleen de beroepen (4-digits) bevat en de beroepssegmenten en -klassen in een eigen kolom staan.''')
 
@@ -609,9 +609,9 @@ fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'Ziekteverzuimp
 st.plotly_chart(fig)
 
 st.markdown('''
-Allereerst beginnen we met een boxplot waar alle banen bij elkaar gezet zijn. Er wordt puur gekeken naar het ziekteverzuimpercentage van werknemers per jaar, over de jaren 2014-2020. 
+Allereerst beginnen we met een boxplot waar alle banen bij elkaar gezet zijn. Er wordt puur gekeken naar het ziekteverzuimpercentage van werknemers per jaar, over de jaren 2014-2020.  
 
-In deze data lijkt een licht stijgende trend te zitten door de jaren heen. Kijkend naar de medianen zien we een stijging van 3.5% in 2014 naar 4.3% in 2020. Toch is het erg moeilijk om hier een duidelijke conclusie uit te trekken omdat de onzekerheid van de boxplots erg hoog is, en het zijn ook maar zeven jaren die getoond worden. 
+In deze data lijkt een licht stijgende trend te zitten door de jaren heen. Kijkend naar de medianen zien we een stijging van 3.5% in 2014 naar 4.3% in 2020. Toch is het erg moeilijk om hier een duidelijke conclusie uit te trekken omdat de onzekerheid van de boxplots erg hoog is, en het zijn ook maar zeven jaren die getoond worden.  
 
 De komst van het Coronavirus is nog niet te zien op deze visualisatie. Met data van 2021 erbij zou dit misschien anders zijn, maar men lijkt zich juist net iets minder vaak ziek te melden in 2020 dan in 2019.  Dit zou kunnen komen door dat mensen voorzichtiger waren en over het algemeen minder ziek werden, of doordat mensen bij het thuiswerken zich minder snel ziek melden omdat er geen kans is dat ze collega’s besmetten.''') 
 
@@ -633,15 +633,15 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
 st.plotly_chart(fig)
 
 st.markdown('''
-Om een beter idee te krijgen van de verhoudingen tussen ziekteverzuim, werknemers die regelmatig veel kracht zetten en het percentage medewerkers dat in een ongemakkelijke houding werken is er een spreidingsmatrix opgesteld. Daaronder volgt een correlatiematrix die overeenkomt met de spreiding van de spreidingsmatrix. 
+Om een beter idee te krijgen van de verhoudingen tussen ziekteverzuim, werknemers die regelmatig veel kracht zetten en het percentage medewerkers dat in een ongemakkelijke houding werken is er een spreidingsmatrix opgesteld. Daaronder volgt een correlatiematrix die overeenkomt met de spreiding van de spreidingsmatrix.  
 
-Ten eerste het verband tussen ziekteverzuim en het percentage werknemers dat regelmatig veel kracht zet. Dit verband heeft iets weg van een toetervorm, wat zou betekenen dat het verband wel lineair is maar geen constante variantie heeft. In de correlatiematrix is te zien dat er een correlatie van 0,27 is tussen de twee variabelen. Een zwak tot medium verband dus. 
+Ten eerste het verband tussen ziekteverzuim en het percentage werknemers dat regelmatig veel kracht zet. Dit verband heeft iets weg van een toetervorm, wat zou betekenen dat het verband wel lineair is maar geen constante variantie heeft. In de correlatiematrix is te zien dat er een correlatie van 0,27 is tussen de twee variabelen. Een zwak tot medium verband dus.  
 
-Tussen ziekteverzuimpercentage en werknemers die in een ongemakkelijke houding werken is een vergelijkbaar verband te zien. Weer heeft het iets weg van een toetervorm. Deze keer is de correlatie wel iets hoger, namelijk 0,35, maar nog steeds is dat absoluut geen sterk verband. 
+Tussen ziekteverzuimpercentage en werknemers die in een ongemakkelijke houding werken is een vergelijkbaar verband te zien. Weer heeft het iets weg van een toetervorm. Deze keer is de correlatie wel iets hoger, namelijk 0,35, maar nog steeds is dat absoluut geen sterk verband.  
 
-Wat opvallend is bij die twee spreidingsmatrices is dat vooral de technische- en de zorg en welzijn beroepen heel breed verdeeld zijn. Zij hebben bepaalde beroepen die een stuk meer kracht vergen en waar je in ongemakkelijkere houdingen staat dan gemiddeld. 
+Wat opvallend is bij die twee spreidingsmatrices is dat vooral de technische- en de zorg en welzijn beroepen heel breed verdeeld zijn. Zij hebben bepaalde beroepen die een stuk meer kracht vergen en waar je in ongemakkelijkere houdingen staat dan gemiddeld.  
 
-Dan het derde plaatje, regelmatig kracht verzetten tegenover een ongemakkelijke werkhouding, hier zien we een sterke correlatie met een correlatiecoëfficiënt van 0,89. Een ongemakkelijke werkhouding lijkt dus te maken te hebben met het regelmatig veel kracht moeten zetten, of andersom. Hier lijken vooral technische beroepen de kroon te spannen met de zwaarste banen. Door deze hoge correlatie weten we ook dat we in latere figuren deze niet meer allebei met andere variabelen hoeven te vergelijken omdat je dan zeer waarschijnlijk tot dezelfde conclusie komt. 
+Dan het derde plaatje, regelmatig kracht verzetten tegenover een ongemakkelijke werkhouding, hier zien we een sterke correlatie met een correlatiecoëfficiënt van 0,89. Een ongemakkelijke werkhouding lijkt dus te maken te hebben met het regelmatig veel kracht moeten zetten, of andersom. Hier lijken vooral technische beroepen de kroon te spannen met de zwaarste banen. Door deze hoge correlatie weten we ook dat we in latere figuren deze niet meer allebei met andere variabelen hoeven te vergelijken omdat je dan zeer waarschijnlijk tot dezelfde conclusie komt.  
 ''')
 
 st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
@@ -675,18 +675,18 @@ st.plotly_chart(fig)
 
 st.markdown('''Om een algemeen beeld te krijgen van het ziekteverzuimpercentage (over de jaren 2014 tot en met 2020) per beroepsklasse, zijn deze boxplots afgebeeld.
 
-**Ligging**
+**Ligging**  
 Het is duidelijk te zien dat de boxplots van *Openbaar bestuur, veiligheid en justitie* (mediaan: 5,1%) en *Zorg en welzijn beroepen* (mediaan 5,4%) hoger ligt dan de rest.  
-De beroepsklasse *Openbaar bestuur, veiligheid en justitie* bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.
-Het hoge percentage bij de beroepsklasse *Zorg en welzijn beroepen* zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.
+De beroepsklasse *Openbaar bestuur, veiligheid en justitie* bevat onder andere beveiligingswerkers zoals politie, brandweer en militaire beroepen. Deze beroepen krijgen over het algemeen vaker te maken met geweld (en vuur), wat meer risico op gewond raken met zich meebrengt. Dit zou een reden kunnen zijn dat het percentage hoog ligt.  
+Het hoge percentage bij de beroepsklasse *Zorg en welzijn beroepen* zou kunnen komen door een hogere kans op besmetting en eventuele fysieke en mentale werkdruk.  
 
-Het is ook opvallend dat de beroepsklasse *Managers* (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse *ICT beroepen* (mediaan: 3,2%) die iets hoger ligt.
-Het lage percentage bij *Managers* doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).
-Bij de beroepsklasse *ICT beroepen* is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).
+Het is ook opvallend dat de beroepsklasse *Managers* (mediaan: 2,7%) vrij laag ligt, gevolgd door de beroepsklasse *ICT beroepen* (mediaan: 3,2%) die iets hoger ligt.  
+Het lage percentage bij *Managers* doet vermoeden dat managers vaker doorwerken bij ziekte, of zich in ieder geval niet ziek melden. Dit blijkt ook uit cijfers van het Sociaal Cultureel Planbureau (https://mtsprout.nl/management-leiderschap/mt-onderzoek-zieke-manager-werkt-altijd-door).  
+Bij de beroepsklasse *ICT beroepen* is het aannemelijk dat het voor werknemers makkelijker is om thuis door te werken als op kantoor werken niet mogelijk is. Dit zou dan ook de reden kunnen zijn van het lage ziekteverzuimpercentage (maar dit is slechts een aanname).  
 
-**Spreiding**
-De spreiding van *Beroepsklasse overig* valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.
-De beroepsklasse *Creatieve en taalkundige beroepen* heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: *Auteurs en kunstenaars* en *Vakspecialisten op artistiek en cultureel gebied*.
+**Spreiding**  
+De spreiding van *Beroepsklasse overig* valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.  
+De beroepsklasse *Creatieve en taalkundige beroepen* heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: *Auteurs en kunstenaars* en *Vakspecialisten op artistiek en cultureel gebied*.  
 De kleine spreiding van de *Pedagogische beroepen* valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: *Docenten*, *Sportinstructeurs* en *Leidsters kinderopvang en onderwijs*. Het beroepssegment *Sportinstructeurs* verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
 
 
@@ -708,10 +708,10 @@ fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemer
 
 st.plotly_chart(fig)
 
-st.markdown('''In de vorige visualisatie was het ziekteverzuimpercentage per beroepsgroep te zien over de jaren 2014 tot en met 2020. In bovenstaande visualisatie zijn deze gegevens iets specifieker weergegeven, namelijk per beroep (elk punt is een beroep) en per jaar (hiervoor wordt de slider gebruikt). De kleuren van de punten geven aan in welke beroepsklasse dit beroep valt.
-In de legenda mist de beroepsklasse *Creatieve en taalkundige beroepen*. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.
+st.markdown('''In de vorige visualisatie was het ziekteverzuimpercentage per beroepsgroep te zien over de jaren 2014 tot en met 2020. In bovenstaande visualisatie zijn deze gegevens iets specifieker weergegeven, namelijk per beroep (elk punt is een beroep) en per jaar (hiervoor wordt de slider gebruikt). De kleuren van de punten geven aan in welke beroepsklasse dit beroep valt.  
+In de legenda mist de beroepsklasse *Creatieve en taalkundige beroepen*. Dit komt doordat deze klasse alleen is opgedeeld in beroepssegmenten en niet in beroepen. Om ook deze klasse duidelijk per jaar in beeld te krijgen, kan het handig zijn om nog een visualisatie te maken met de beroepssegmenten in plaats van de beroepen. Voor nu zijn we vooral geïnteresseerd in het totaalplaatje.  
 
-De animatie van de slider laat zien dat de puntenwolk elk jaar iets hoger komt te liggen. Ook is het interessant om te zien dat de spreiding van de puntenwolk groter is in 2020, als je deze vergelijkt met de puntenwolk van 2014.
+De animatie van de slider laat zien dat de puntenwolk elk jaar iets hoger komt te liggen. Ook is het interessant om te zien dat de spreiding van de puntenwolk groter is in 2020, als je deze vergelijkt met de puntenwolk van 2014.  
 
 Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 2020. Kijkend naar de blauwe puntenwolk aan de linkerkant (*Pedagogische beroepen*), zien we een punt opeens omhoog schieten. Dit is het punt dat hoort bij de beroepen *Leidsters kinderopvang en onderwijsassistenten*. Dat dit punt in 2020 opeens omhoogschiet doet erg vermoeden dat dit iets te maken heeft met de coronacrisis.''')
 
@@ -764,9 +764,9 @@ st.plotly_chart(fig)
 df_beroepsklasse_groupby = df_beroepsklasse.groupby('Beroep').mean()
 fysiekearbeid = df_beroepsklasse_groupby.columns.tolist()[13:-1]
 fysiekearbeid_labels = list(labeldict.values())[13:-1]
-st.markdown('''In deze barplot is het ziekteverzuimpercentage per beroepsklasse te zien. Via de button is het jaar 2019 en 2020 te zien. Door op een balkje te gaan staan is te zien welk beroep het is en hoe hoog het percentage is.
-In 2019 is te zien dat buschauffeurs en taxibestuurders een uitschieter zijn, met ongeveer 7%. Er is ook te zien dat algemeen directeuren een relatief lage uitval hebben met 1,5%. 
-In 2020 is te zien dat het percentage ziekteverzuim is toegenomen vergeleken met 2019. Hierin is te zien dat hulpkrachten in de bouw en industrie een relatief hoog percentage hebben namelijk 7,6%.  Net als in 2019 hebben algemeen directeuren een relatief laag uitval percentage met 1,1%. Dit percentage ligt lager dan in 2019. 
+st.markdown('''In deze barplot is het ziekteverzuimpercentage per beroepsklasse te zien. Via de button is het jaar 2019 en 2020 te zien. Door op een balkje te gaan staan is te zien welk beroep het is en hoe hoog het percentage is.  
+In 2019 is te zien dat buschauffeurs en taxibestuurders een uitschieter zijn, met ongeveer 7%. Er is ook te zien dat algemeen directeuren een relatief lage uitval hebben met 1,5%.   
+In 2020 is te zien dat het percentage ziekteverzuim is toegenomen vergeleken met 2019. Hierin is te zien dat hulpkrachten in de bouw en industrie een relatief hoog percentage hebben namelijk 7,6%.  Net als in 2019 hebben algemeen directeuren een relatief laag uitval percentage met 1,1%. Dit percentage ligt lager dan in 2019.   
 Aan de hand van de barplot is dus het ziekteverzuimpercentage per beroepsklasse te zien. Uit de grafieken blijkt dat algemeen directeuren een relatief laag ziekteverzuimpercentage hebben. Er is niet duidelijk te zien welke beroepsklasse een relatief hoog ziekteverzuimpercentage hebben.''')
 
 fig2 = go.Figure()
@@ -802,7 +802,7 @@ st.plotly_chart(fig2)
 df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Beroepsklasse']).mean()
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
-st.markdown(''' In de laatste barplot is de fysieke arbeidsbelasting per gevaar per beroepsklasse te zien. Door middel van de dropdown box is per gevaar te zien welke gevaar een hoog of laag arbeidsbelasting percentage heeft. Bij de eerste elf gevaren blijkt dat Agrarische, Technische en Logistieke beroepen een hoog percentage scoren. Uit de overige gevaren blijkt dat vaak specifieke beroepen een hoog percentage scoren.  Zo is de kans dat iemand van zorg en welzijn het snelst in contact komt met een besmet persoon het hoogst. 
+st.markdown(''' In de laatste barplot is de fysieke arbeidsbelasting per gevaar per beroepsklasse te zien. Door middel van de dropdown box is per gevaar te zien welke gevaar een hoog of laag arbeidsbelasting percentage heeft. Bij de eerste elf gevaren blijkt dat Agrarische, Technische en Logistieke beroepen een hoog percentage scoren. Uit de overige gevaren blijkt dat vaak specifieke beroepen een hoog percentage scoren.  Zo is de kans dat iemand van zorg en welzijn het snelst in contact komt met een besmet persoon het hoogst.  
 Tussen alle fysieke arbeidsbelasting variabelen zit twee keer de variabele ‘Percentage werknemers dat gevaarlijk werk uitvoert’. Eén keer tot 2018 en één keer vanaf 2018. Dit komt omdat de informatie tot 2018 op een andere manier is verkregen dan daarna. Te zien is dat het gemiddelde percentage vanaf 2018 hoger ligt dan het gemiddelde percentage tot 2018. Een mogelijke oorzaak zou kunnen zijn dat tot 2018 mensen met de hand konden aangeven of ze een gevaarlijk beroep uit voerden. Terwijl het vanaf 2018 zo was dat als men 1 van de 10 gevaren aanvinkte het automatisch viel onder gevaarlijk beroep.''')
 
 st.header('Conclusie')
