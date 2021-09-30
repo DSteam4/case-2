@@ -46,7 +46,6 @@ warnings.filterwarnings('ignore')
 import session_info
 session_info.show()
 
-./.streamlit/config.toml
 [
 theme
 ]
