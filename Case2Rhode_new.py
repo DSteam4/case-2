@@ -50,9 +50,9 @@ warnings.filterwarnings('ignore')
 import session_info
 session_info.show()
 
-st.title("Blogpost ziekteverzuim")
+st.title("Blogpost ziekteverzuim en fysieke arbeidsbelasting")
 st.header("Inleiding")
-
+st.markdown('''Waar werk is, is ziekteverzuim. In het midden van de coronapandemie waarin thuiswerken de norm is geworden en we te maken hebben met verspreiden van ziektes op de werkvloer speelt ziekteverzuim een belangrijke rol bij zowel alle beroepssegmenten. De blogpost *Ziekteverzuim en fysieke arbeidsbelasting* brengt het verband tussen ziekteverzuim en beroep aan het licht met betrekking tot factoren als herhaalde bewegingen tijdens het werk, stoffen op huid, het inademen van stoffen, et cetera. De data die is gebruikt om de informatie grafisch in beeld te brengen is door het CBS verstrekt.''')
 # Set working directories
 
 # In[3]:
@@ -409,7 +409,7 @@ We willen uiteindelijk een dataset waarin de kolom *Beroep* alleen de beroepen (
 
 # In[32]:
 
-st.markdown('Stap 1: Splits de dataset op in 5 datasets (totaal, beroepsniveau, beroepsklasse, beroepssegment, beroep)')
+st.markdown('**Stap 1**: Splits de dataset op in 5 datasets (totaal, beroepsniveau, beroepsklasse, beroepssegment, beroep)')
 
 # Index getallen per 'level' in een lijst zetten
 id_totaal = list(map(int, df.index[df['Beroep'].str.contains('Totaal')]))
@@ -443,7 +443,7 @@ st.code(code3, language = 'python')
 # Ook maken we een dataset aan waarin zowel 'Beroep', 'Beroepssegment' als 'Beroepsklasse' een variabele is.
 
 # In[33]:
-st.markdown('Stap 2: Verkrijg de cijfers van de beroepen, beroepssegmenten en beroepsklassen en stop deze in nieuwe kolommen (zodat we kunnen daarop kunnen mergen)')
+st.markdown('**Stap 2**: Verkrijg de cijfers van de beroepen, beroepssegmenten en beroepsklassen en stop deze in nieuwe kolommen (zodat we kunnen daarop kunnen mergen)')
 
 # Verkrijg de eerste twee en eerste 3 cijfers uit de kolom 'Beroep' en stop deze in nieuwe kolommen
 df_beroep['ID2'] = df_beroep['Beroep'].str.extract('(^\d{2})')
@@ -467,7 +467,7 @@ df_beroepsklasse['ID2'] = df_beroepsklasse['Beroep'].str.extract('(^\d{2})')'''
 st.code(code4, language = 'python')
         
 # In[34]:
-st.markdown('Stap 3: Verwijder van de datasets met betrekking tot beroepssegment en beroepsklasse de duplicates, zodat elk beroepssegment of -klasse maar één keer voorkomt (en we kunnen mergen als een many_to_one)')
+st.markdown('**Stap 3**: Verwijder van de datasets met betrekking tot beroepssegment en beroepsklasse de duplicates, zodat elk beroepssegment of -klasse maar één keer voorkomt (en we kunnen mergen als een many_to_one)')
 
 # Pak de kolommen Beroep en ID(2/3)
 df_sm = df_beroepssegment[['Beroep','ID3']]
@@ -487,7 +487,7 @@ df_bk.drop_duplicates(inplace = True)'''
 st.code(code5, language = 'python')
 
 # In[35]:
-st.markdown('Stap 4: Merge de drie datasets tot een dataset met als eerste drie kolommen: *Beroep*, *Beroepssegment* en *Beroepsklasse*.')
+st.markdown('**Stap 4**: Merge de drie datasets tot een dataset met als eerste drie kolommen: *Beroep*, *Beroepssegment* en *Beroepsklasse*.')
 
 # Merge beroep met de unieke combinaties van beroepsklasse
 df_beroep_klasse = df_beroep.merge(df_bk, on = 'ID2', validate = 'many_to_one', suffixes = ['', '_y'])
@@ -729,7 +729,7 @@ fig.update_layout(legend_title = 'verhouding schermcontact en ziekteverzuim')
 
 st.plotly_chart(fig)
 
-
+st.markdown('''In bovenstaande grafiek is te zien dat het percentage ziekteverzuim heel geclusterd is bij een laag aantal uren. Des te meer het aantal uren dat het personeel naar een scherm kijkt toeneemt, des te meer het ziekteverzuim tot het toppunt van ± 4 uur. Alhoewel we zien dat het ziekteverzuimpercentage nogal van elkaar kan afwijken, en er zowel beroepsgroepen zijn die uitschieten ten opzichte van de overige beroepsgroepen. Naarmate het personeel meer dan ± 4 uur schermtijd heeft, daalt het ziekteverzuim en clustert het zich meer.''')
 # In[ ]:
 
 
