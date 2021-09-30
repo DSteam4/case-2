@@ -101,7 +101,7 @@ code1 = '''def get_odata(target_url):
     return data'''
 st.code(code1, language = 'python')
 
-st.markdown('Vervolgens hebben we de twee dataset gemergd op de variabelen *Beroep* en *Perioden*, met onderstaande code.'''
+st.markdown('Vervolgens hebben we de twee dataset gemergd op de variabelen *Beroep* en *Perioden*, met onderstaande code.''')
 code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
                                 how = 'outer',
                                 on = ['Beroep', 'Perioden'],
