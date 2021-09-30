@@ -47,7 +47,7 @@ import session_info
 session_info.show()
 
 st.title("Ziekteverzuim en fysieke arbeidsbelasting")
-st.markdown('Namen: Vincent Kemme (500838439), Rhodé Rebel (500819128), Amber van der Pol (500803136) en Oussama Abou')
+st.markdown('Namen: Vincent Kemme (500838439), Rhodé Rebel (500819128), Amber van der Pol (500803136) en Oussama Abou (500803060)')
 st.header("Inleiding")
 st.markdown('''Waar werk is, is ziekteverzuim. In het midden van de coronapandemie waarin thuiswerken de norm is geworden en we te maken hebben met verspreiden van ziektes op de werkvloer speelt ziekteverzuim een belangrijke rol bij zowel alle beroepssegmenten. De blogpost *Ziekteverzuim en fysieke arbeidsbelasting* brengt het verband tussen ziekteverzuim en beroep aan het licht met betrekking tot factoren als herhaalde bewegingen tijdens het werk, stoffen op huid, het inademen van stoffen, et cetera. De data die is gebruikt om de informatie grafisch in beeld te brengen is door het CBS verstrekt.''')
 # Set working directories
