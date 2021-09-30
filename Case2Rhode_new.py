@@ -771,7 +771,7 @@ fig.add_trace(go.Bar(x = df20['Beroep'], y = df20['ZiekteverzuimpercentageWerkne
 year_buttons = [{'label': '2019', 'method': 'update', 'args': [{'visible': [True, False]}]},
                 {'label': '2020', 'method': 'update', 'args': [{'visible': [False, True]}]}]
 
-fig.update_layout({'updatemenus':[{'active': True, 'type': 'buttons', 'buttons':year_buttons, 'x': -0.02, 'y': 1.08}]},
+fig.update_layout({'updatemenus':[{'active': True, 'type': 'buttons', 'buttons':year_buttons, 'x': -0.03, 'y': 1.08}]},
                   showlegend = False,
                   title = 'Ziekteverzuimpercentage per beroep in 2019 en 2020')
 
