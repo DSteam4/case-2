@@ -111,7 +111,7 @@ st.code(code2, language = 'python')
 st.subheader('Kwaliteit van de dataset')
 st.markdown('''De data uit de datasets zijn gewonnen middels enquêtes die zijn ingevuld door werknemers. Enquêtes worden vaak vrij subjectief ingevuld en zijn dus niet de betrouwbaarste bronnen om feitelijke gegevens te verzamelen. Hier moeten we rekening mee houden bij het trekken van conclusies.  
 
-            In beide dataset zijn missende waarden te vinden, maar vooral de dataset fysieke arbeidsbelasting bevat veel missende waarden. We kiezen ervoor deze niet te verwijderen, maar er rekening mee te houden dat het ontbreken van bepaalde gegevens kan leiden tot onzekere conclusies.''')
+In beide dataset zijn missende waarden te vinden, maar vooral de dataset fysieke arbeidsbelasting bevat veel missende waarden. We kiezen ervoor deze niet te verwijderen, maar er rekening mee te houden dat het ontbreken van bepaalde gegevens kan leiden tot onzekere conclusies.''')
 st.subheader('Variabelen uit de dataset')
 st.markdown('''De datasets bevatten data van het jaar 2014 tot het jaar 2021. De belangrijke variabelen in deze datasets zijn Beroep, Perioden en Ziekteverzuimpercentage. De variabele beroep zijn ingedeeld in beroepsklasse. Die klasse zijn weer in gedeeld in beroepssegment en dat per beroep. De perioden zijn ingedeeld in jaren.  Het ziekteverzuimpercentage is het aantal ziektedagen die een werknemer heeft opgenomen in procenten van het totaal aantal beschikbare werkdagen. ''')
 
