@@ -654,6 +654,16 @@ fig.update_layout(width=1000, height=700, # Maak grafiek groter
 
 st.plotly_chart(fig)
 
+st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
+                                    "RegelmatigVeelKrachtZetten_1", 
+                                    "InOngemakkelijkeWerkhoudingWerken_20"]].corr().rename(columns={
+  "ZiekteverzuimpercentageWerknemers_1": "Ziekteverzuimpercentage", 
+  "RegelmatigVeelKrachtZetten_1": "Veel kracht zetten", 
+  "InOngemakkelijkeWerkhoudingWerken_20": "Ongemakkelijke werkhouding"}, index ={
+  "ZiekteverzuimpercentageWerknemers_1": "Ziekteverzuimpercentage", 
+  "RegelmatigVeelKrachtZetten_1": "Veel kracht zetten", 
+  "InOngemakkelijkeWerkhoudingWerken_20": "Ongemakkelijke werkhouding"}))
+
 st.markdown('''
 Om een beter idee te krijgen van de verhoudingen tussen ziekteverzuim, werknemers die regelmatig veel kracht zetten en het percentage medewerkers dat in een ongemakkelijke houding werken is er een spreidingsmatrix opgesteld. Daaronder volgt een correlatiematrix die overeenkomt met de spreiding van de spreidingsmatrix.  
 
@@ -665,16 +675,6 @@ Wat opvallend is bij die twee spreidingsmatrices is dat vooral de technische- en
 
 Dan het derde plaatje, regelmatig kracht verzetten tegenover een ongemakkelijke werkhouding, hier zien we een sterke correlatie met een correlatiecoëfficiënt van 0,89. Een ongemakkelijke werkhouding lijkt dus te maken te hebben met het regelmatig veel kracht moeten zetten, of andersom. Hier lijken vooral technische beroepen de kroon te spannen met de zwaarste banen. Door deze hoge correlatie weten we ook dat we in latere figuren deze niet meer allebei met andere variabelen hoeven te vergelijken omdat je dan zeer waarschijnlijk tot dezelfde conclusie komt.  
 ''')
-
-st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1", 
-                                    "RegelmatigVeelKrachtZetten_1", 
-                                    "InOngemakkelijkeWerkhoudingWerken_20"]].corr().rename(columns={
-  "ZiekteverzuimpercentageWerknemers_1": "Ziekteverzuimpercentage", 
-  "RegelmatigVeelKrachtZetten_1": "Veel kracht zetten", 
-  "InOngemakkelijkeWerkhoudingWerken_20": "Ongemakkelijke werkhouding"}, index ={
-  "ZiekteverzuimpercentageWerknemers_1": "Ziekteverzuimpercentage", 
-  "RegelmatigVeelKrachtZetten_1": "Veel kracht zetten", 
-  "InOngemakkelijkeWerkhoudingWerken_20": "Ongemakkelijke werkhouding"}))
 
 
 # <font color = 'red'> Trompetvorm tussen ziekteverzuimpercentage - ongemakkelijke werkhouding en ziekteverzuimpercentage - veel kracht verzetten. Ook sterke samenhang te zien tussen veel kracht verzetten en ongemakkelijke werkhouding.
@@ -854,7 +854,7 @@ Door de jaren heen is er ook een lichte stijging. Als alle beroepen bij elkaar g
 
 Per beroep kijkend naar de laatste twee jaar zien we dat er bij Algemeen Directeuren amper ziekteverzuim is, net boven de 1%. Buschauffeurs en Trambestuurders daarentegen hebben in 2019 de hoogste uitval. In 2020 zijn dit de hulpkrachten in bouw en industrie. Opvallend genoeg vallen deze twee beroepen niet onder dezelfde beroepsklasse. 
 
-Kijkend naar de specifieke fysieke belasting van beroepsklassen zien we dat Technische Beroepen er vaak bovenuit springen met gevaarlijke situaties. Dit zou dus zorgen voor het ziekteverzuim binnen deze beroepsklasse. Mensen met een beroep in de Zorg en Welzijn klasse hebben dan juist het gevaar dat ze het snelt in contact kunnen komen met een besmet persoon, wat natuurlijk de kans op ziekteverzuim verhoogt.  
+Kijkend naar de specifieke fysieke belasting van beroepsklassen zien we dat Technische Beroepen er vaak bovenuit springen met gevaarlijke situaties. Dit zou dus zorgen voor het ziekteverzuim binnen deze beroepsklasse. Mensen met een beroep in de Zorg en Welzijn klasse hebben dan juist het gevaar dat ze het snelst in contact kunnen komen met een besmet persoon, wat natuurlijk de kans op ziekteverzuim verhoogt.  
 
 Als laatste onderzocht is het aantal schermuren per dag. Bij lage uren is het erg geclusterd rond het gemiddelde, daarna lijkt het te stijgen tot je over de 4 uur per dag bereikt, dan zakt het ineens in naar onder gemiddeld ziekteverzuim. 
 
