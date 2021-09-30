@@ -728,9 +728,9 @@ index_vals = df19['Beroepsklasse'].astype('category').cat.codes # maak categorie
 fig = go.Figure()
 
 fig.add_trace(go.Bar(x = df19['Beroep'], y = df19['ZiekteverzuimpercentageWerknemers_1'],
-                     name = '2019', marker={'color':index_vals, 'colorscale': px.colors.qualitative.Light24}))
+                     name = '2019', marker={'color':index_vals, 'colorscale': px.colors.qualitative.Light24}, visible = True))
 fig.add_trace(go.Bar(x = df20['Beroep'], y = df20['ZiekteverzuimpercentageWerknemers_1'],
-                     name = '2020', marker={'color':index_vals, 'colorscale': px.colors.qualitative.Light24}))
+                     name = '2020', marker={'color':index_vals, 'colorscale': px.colors.qualitative.Light24}, visible = False))
 
 year_buttons = [{'label': '2019', 'method': 'update', 'args': [{'visible': [True, False]}]},
                 {'label': '2020', 'method': 'update', 'args': [{'visible': [False, True]}]}]
@@ -762,8 +762,13 @@ fig2 = go.Figure()
 j = 0
 dropdown_buttons = []
 for i in fysiekearbeid:
+    if j == 0:
+        v = True
+    else:
+        v = False
+     
     fig2.add_trace(go.Bar(x = df_beroepsklasse_groupby.index, y = df_beroepsklasse_groupby[i],
-                        name = i, text=df_beroepsklasse_groupby[i]))
+                        name = i, text=df_beroepsklasse_groupby[i]), visible = v)
 
     dropdown_buttons.append({'label':fysiekearbeid_labels[j],
                              'method': 'update',
