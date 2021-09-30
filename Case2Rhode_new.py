@@ -632,7 +632,9 @@ labeldict_breaks = {'Perioden':'Jaar',
 st.header('Visualisatie van de data')
 
 fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
-            color = 'Perioden')
+            color = 'Perioden',
+            labels = labeldict_breaks,
+            title = 'Ziekteverzuimpercentage per jaar')
 st.plotly_chart(fig)
 
 st.markdown('''
@@ -651,7 +653,8 @@ df_beroep_segklas_groupby = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment
 fig = px.scatter_matrix(df_beroep_segklas_groupby,
                         dimensions=["ZiekteverzuimpercentageWerknemers_1", "RegelmatigVeelKrachtZetten_1", "InOngemakkelijkeWerkhoudingWerken_20"],
                         color = df_beroep_segklas_groupby.index.get_level_values('Beroepsklasse'),
-                        labels = labeldict_breaks)
+                        labels = labeldict_breaks,
+                        title = 'Ziekteverzuimpercentage ten opzichte van het percentage werknemers dat veel kracht verzet<br>en het percentage dat in een ongemakkelijke werkhouding werkt')
 
 fig.update_traces(diagonal_visible=False) # laat diagonale grafieken weg
 fig.update_layout(width=1000, height=700, # Maak grafiek groter
@@ -691,7 +694,8 @@ st.table(df_beroep_segklas_groupby[["ZiekteverzuimpercentageWerknemers_1",
 
 
 fig = px.box(data_frame = df_beroepsklasse, x = 'Beroep', y = 'ZiekteverzuimpercentageWerknemers_1',
-            color = 'Beroep')
+            color = 'Beroep',
+            title = 'Ziekteverzuimpercentage per beroepsklasse')
 
 fig.update_xaxes(title = 'Beroepsklasse')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
@@ -729,7 +733,8 @@ De kleine spreiding van de *Pedagogische beroepen* valt ook op. Dit heeft waarsc
 fig = px.scatter(data_frame = df_beroep_segklas, x = 'Beroep', y = 'ZiekteverzuimpercentageWerknemers_1',
                 color = 'Beroepsklasse',
                 animation_frame = 'Perioden',
-                labels = labeldict_breaks)
+                labels = labeldict_breaks,
+                title = 'Ziekteverzuimpercentage per beroep per jaar')
 
 fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
@@ -767,9 +772,10 @@ year_buttons = [{'label': '2019', 'method': 'update', 'args': [{'visible': [True
                 {'label': '2020', 'method': 'update', 'args': [{'visible': [False, True]}]}]
 
 fig.update_layout({'updatemenus':[{'active': True, 'type': 'buttons', 'buttons':year_buttons}]},
-                  showlegend = False)
+                  showlegend = False,
+                  title = 'Ziekteverzuimpercentage per beroep in 2019 en 2020')
 
-fig.update_xaxes(showticklabels=False)
+fig.update_xaxes(title = 'Beroep', showticklabels=False)
 fig.update_yaxes(range=[0, 8], title = 'Ziekteverzuimpercentage')
 
 st.plotly_chart(fig)
@@ -815,7 +821,8 @@ fig2.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
                                 'x': 1, 'xref':"paper", 'y':1.3, 'yref':"paper",
                                 'showarrow':False}],
                   showlegend = False,
-                  height = 800)
+                  height = 800,
+                  title = 'Percentage fysieke arbeidsbelasting per beroepsklasse')
 
 st.plotly_chart(fig2)
 
@@ -830,12 +837,13 @@ st.markdown('''In deze barplot is de fysieke arbeidsbelasting per gevaar per ber
 Tussen alle fysieke arbeidsbelasting variabelen zit twee keer de variabele ‘Percentage werknemers dat gevaarlijk werk uitvoert’. Eén keer tot 2018 en één keer vanaf 2018. Dit komt omdat de informatie tot 2018 op een andere manier is verkregen dan daarna. Te zien is dat het gemiddelde percentage vanaf 2018 hoger ligt dan het gemiddelde percentage tot 2018. Een mogelijke oorzaak zou kunnen zijn dat tot 2018 mensen met de hand konden aangeven of ze een gevaarlijk beroep uit voerden. Terwijl het vanaf 2018 zo was dat als men 1 van de 10 gevaren aanvinkte het automatisch viel onder gevaarlijk beroep.''')
 
 fig = px.scatter(data_frame = df_beroepsklasse, x = 'UurPerDagAanBeeldschermVoorWerk_22', y = 'ZiekteverzuimpercentageWerknemers_1', 
-            color = 'Beroep')
+                color = 'Beroep',
+                title = 'Ziekteverzuimpercentage ten opzichte van schermuren')
 
 fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
-fig.update_layout(legend_title = 'Verhouding schermuren en ziekteverzuim')
+fig.update_layout(legend_title = 'Beroepsklassen')
 
 st.plotly_chart(fig)
 
