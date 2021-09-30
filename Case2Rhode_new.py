@@ -686,7 +686,9 @@ Bij de beroepsklasse *ICT beroepen* is het aannemelijk dat het voor werknemers m
 
 **Spreiding**  
 De spreiding van *Beroepsklasse overig* valt het meeste op. De spreiding van deze klasse is waarschijnlijk te verklaren door de verschillende beroepen die hierin vallen. Deze beroepen zijn niet gespecificeerd in de dataset, maar het is aannemelijk dat deze beroepen aardig verschillen van elkaar en daardoor ook verschillende ziekteverzuimpercentages hebben.  
+
 De beroepsklasse *Creatieve en taalkundige beroepen* heeft ook een redelijk grote spreiding. De verwachting is dat dit komt door het brede spectrum aan beroepen binnen die beroepsklasse. Ook deze beroepen zijn niet gespecificeerd in de dataset, maar de beroepssegmenten die hieronder vallen wel: *Auteurs en kunstenaars* en *Vakspecialisten op artistiek en cultureel gebied*.  
+
 De kleine spreiding van de *Pedagogische beroepen* valt ook op. Dit heeft waarschijnlijk als reden het tegenovergestelde van het bovengenoemde. De beroepssegmenten die onder deze klasse vallen zijn: *Docenten*, *Sportinstructeurs* en *Leidsters kinderopvang en onderwijs*. Het beroepssegment *Sportinstructeurs* verschilt qua werkzaamheden van de andere twee beroepssegmenten - je zou dus eigenlijk niet zo’n kleine spreiding verwachten – maar dit segment bevat geen data over het ziekteverzuimpercentage en doet dus niet mee in de boxplot.''')
 
 
