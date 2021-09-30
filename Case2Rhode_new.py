@@ -843,7 +843,8 @@ fig = px.scatter(data_frame = df_beroepsklasse, x = 'UurPerDagAanBeeldschermVoor
 fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
-fig.update_layout(legend_title = 'Beroepsklassen')
+fig.update_layout(legend_title = 'Beroepsklassen',
+                 height = 800)
 
 st.plotly_chart(fig)
 
