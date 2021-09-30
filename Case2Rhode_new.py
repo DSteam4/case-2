@@ -46,13 +46,27 @@ warnings.filterwarnings('ignore')
 import session_info
 session_info.show()
 
-{
-    "primaryColor": "someColor1"
-    "backgroundColor": "someColor3",
-    "secondaryBackgroundColor": "someColor4",
-    "textColor": "someColor5",
-    "font": "someFont",
-}
+./.streamlit/config.toml
+[
+theme
+]
+
+# Primary accent for interactive elements
+primaryColor = '#7792E3'
+
+# Background color for the main content area
+backgroundColor = '#273346'
+
+# Background color for sidebar and most interactive widgets
+secondaryBackgroundColor = '#B9F1C0'
+
+# Color used for almost all text
+textColor = '#FFFFFF'
+
+# Font family for all text in the app, except code blocks
+# Accepted values (serif | sans serif | monospace) 
+# Default: "sans serif"
+font = "sans serif"
 
 st.title("Ziekteverzuim en fysieke arbeidsbelasting")
 st.header("Inleiding")
