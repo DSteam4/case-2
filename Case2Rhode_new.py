@@ -199,7 +199,7 @@ print(zv_tds.info())
 
 
 ziekteverzuim = zv_tds
-ziekteverzuim.to_csv(arr_map_structure[1]+'_ziekteverzuim.csv', index=False) # Dataframe als csv opslaan als 'raw_ziekteverzuim'
+
 
 
 # ### 2.1 Fysieke arbeidsbelasting werknemers; beroep
@@ -245,7 +245,7 @@ print(fysiekearbeidsbelasting.info())
 
 
 # Dataframe als csv opslaan als 'raw_fysiekearbeidsbelasting'
-fysiekearbeidsbelasting.to_csv(arr_map_structure[1]+'_fysiekearbeidsbelasting.csv', index=False)
+
 
 
 # # 3 Exploratory Data Analysis
