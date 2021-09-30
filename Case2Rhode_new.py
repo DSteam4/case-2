@@ -83,6 +83,7 @@ if __name__== '__main__':
         
 st.header("Analyse van de data")
 st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*. Dit zijn twee openbare API’s die we hebben opgevraagd:  
+
 Ziekteverzuim volgens werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84437NED/TypedDataSet  
 Fysieke arbeidsbelasting werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84435NED/TypedDataSet  
 
