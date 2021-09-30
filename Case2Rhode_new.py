@@ -739,6 +739,7 @@ fig = px.scatter(data_frame = df_beroep_segklas, x = 'Beroep', y = 'Ziekteverzui
 fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
+fig.update_layout(height = 500)
 
 st.plotly_chart(fig)
 
