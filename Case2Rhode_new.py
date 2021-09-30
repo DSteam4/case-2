@@ -2,7 +2,6 @@
 # coding: utf-8
 
 # # Case 2: Blogpost
-[theme]
 
 # Primary accent for interactive elements
 primaryColor = '#7792E3'
