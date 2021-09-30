@@ -78,6 +78,8 @@ def main():
         st.subheader('Analyse van de data')
     else:
         st.subheader('Visualisatie van de data')
+if _name_== '_main_':
+  main()
         
 st.header("Analyse van de data")
 st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*.''')
