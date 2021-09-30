@@ -69,7 +69,16 @@ arr_map_structure  = [os.getcwd() + map for map in   ['/Data','/Data/raw','/Data
 
 
 # # 2 Import data
-
+def main():
+    menu = ["Home", "Search", "About"]
+    choice = st.sidebar.selectbox("Menu", menu)
+    if choice == 'Home':
+        st.subheader('Home')
+    elif choice == 'Search':
+        st.subheader('Search')
+    else:
+        st.subheader('About')
+        
 st.header("Analyse van de data")
 st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*.''')
 st.subheader('Kwaliteit van de dataset')
