@@ -84,8 +84,18 @@ if __name__== '__main__':
 st.header("Analyse van de data")
 st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*. Dit zijn twee openbare API’s die we hebben opgevraagd:  
 
-Ziekteverzuim volgens werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84437NED/TypedDataSet  
-Fysieke arbeidsbelasting werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84435NED/TypedDataSet  
+**Ziekteverzuim volgens werknemers; beroep**  
+
+API: https://opendata.cbs.nl/ODataApi/odata/84437NED/TypedDataSet  
+
+Beschrijving: "Deze tabel bevat gegevens over het ziekteverzuim van werknemers in de leeftijd van 15 tot 75 jaar, naar beroepsniveau en beroepsrichting. Hierbij tellen ook werknemers mee die wel een dienstverband hebben maar geen arbeidsprestaties leveren wegens ziekte, zwangerschapsverlof of een andere tijdelijke loopbaanonderbreking. Verder zijn in de tabel ook gegevens opgenomen over het laatste verzuimgeval van werknemers. Dit verzuimgeval kan langer dan 12 maanden geleden zijn." (CBS, 2021)
+
+**Fysieke arbeidsbelasting werknemers; beroep**  
+
+API: https://opendata.cbs.nl/ODataApi/odata/84435NED/TypedDataSet  
+
+Beschrijving: “Deze tabel bevat gegevens over de fysieke arbeidsomstandigheden van de Nederlandse werknemer van 15 tot 75 jaar, naar beroepsniveau en beroepsrichting. In de tabel worden cijfers gepresenteerd over kracht zetten, geluid en trillingen, gevaarlijk werk en gevaarlijke stoffen, werkhouding en beeldschermwerk.” (CBS, 2021)  
+ 
 
 We hebben onderstaande functie gedefinieerd om de API’s mee op te vragen.''')
 code1 = '''def get_odata(target_url):
@@ -102,7 +112,7 @@ code1 = '''def get_odata(target_url):
     return data'''
 st.code(code1, language = 'python')
 
-st.markdown('Vervolgens hebben we de twee dataset gemergd op de variabelen *Beroep* en *Perioden*, met onderstaande code.''')
+st.markdown('Vervolgens hebben we de twee datasets gemergd op de variabelen *Beroep* en *Perioden*, met onderstaande code.''')
 code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
                                 how = 'outer',
                                 on = ['Beroep', 'Perioden'],
