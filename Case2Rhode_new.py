@@ -82,7 +82,32 @@ if __name__== '__main__':
   main()
         
 st.header("Analyse van de data")
-st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*.''')
+st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*. Dit zijn twee openbare API’s die we hebben opgevraagd:  
+Ziekteverzuim volgens werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84437NED/TypedDataSet  
+Fysieke arbeidsbelasting werknemers; beroep - https://opendata.cbs.nl/ODataApi/odata/84435NED/TypedDataSet  
+
+We hebben onderstaande functie gedefinieerd om de API’s mee op te vragen.''')
+code1 = '''def get_odata(target_url):
+    data = pd.DataFrame()
+    while target_url:
+        r = requests.get(target_url).json()
+        data = data.append(pd.DataFrame(r['value']))
+        
+        if '@odata.nextLink' in r:
+            target_url = r['@odata.nextLink']
+        else:
+            target_url = None
+            
+    return data'''
+st.code(code1, language = 'python')
+
+st.markdown('Vervolgens hebben we de twee dataset gemergd op de variabelen *Beroep* en *Perioden*, met onderstaande code.'''
+code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
+                                how = 'outer',
+                                on = ['Beroep', 'Perioden'],
+                                validate = 'one_to_one')'''
+st.code(code2, language = 'python')
+            
 st.subheader('Kwaliteit van de dataset')
 st.markdown('''De dataset ziekteverzuim bevat data van het jaar 2014 tot het jaar 2021. De dataset is ontstaan uit een enquête. Deze dataset is gecombineerd met de dataset fysieke arbeidsbelasting werknemers. Dit is gedaan op de variabelen beroep en perioden. De dataset fysieke arbeidsbelasting komt net als de andere dataset uit 2014 tot 2020. Er is middels een enquête informatie gewonnen. ''')
 st.subheader('Variabelen uit de dataset')
@@ -107,19 +132,7 @@ def get_odata(target_url):
             
     return data
   
-code1 = '''def get_odata(target_url):
-    data = pd.DataFrame()
-    while target_url:
-        r = requests.get(target_url).json()
-        data = data.append(pd.DataFrame(r['value']))
-        
-        if '@odata.nextLink' in r:
-            target_url = r['@odata.nextLink']
-        else:
-            target_url = None
-            
-    return data'''
-st.code(code1, language = 'python')
+
 
 
 # ### 2.1 Ziekteverzuim volgens werknemers; beroep
@@ -273,11 +286,7 @@ df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
                                 validate = 'one_to_one')
 print(df_merged.columns)
 
-code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
-                                how = 'outer',
-                                on = ['Beroep', 'Perioden'],
-                                validate = 'one_to_one')'''
-st.code(code2, language = 'python')
+
 
 # ### 3.2.1 Kolommen splitsen / verwijderen / hernoemen
 
