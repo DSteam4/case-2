@@ -78,7 +78,7 @@ def main():
         st.subheader('Analyse van de data')
     else:
         st.subheader('Visualisatie van de data')
-if _name_== '_main_':
+if __name__== '__main__':
   main()
         
 st.header("Analyse van de data")
