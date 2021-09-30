@@ -816,7 +816,7 @@ for i in fysiekearbeid:
 
 fig2.update_traces(texttemplate='%{text:.1f}', textposition='outside')
 fig2.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
-                                   'x': 1, 'y': 1.2}]},
+                                   'x': 1, 'y': 1}]},
                   annotations = [{'text':"Fysiekse arbeidsbelasting", 'font_size':15,
                                 'x': 1, 'xref':"paper", 'y':1.3, 'yref':"paper",
                                 'showarrow':False}],
