@@ -766,9 +766,9 @@ for i in fysiekearbeid:
         v = True
     else:
         v = False
-     
+    
     fig2.add_trace(go.Bar(x = df_beroepsklasse_groupby.index, y = df_beroepsklasse_groupby[i],
-                        name = i, text=df_beroepsklasse_groupby[i], visible = v)
+                        name = i, text=df_beroepsklasse_groupby[i], visible = v))
 
     dropdown_buttons.append({'label':fysiekearbeid_labels[j],
                              'method': 'update',
