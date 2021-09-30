@@ -597,7 +597,7 @@ labeldict_breaks = {'Perioden':'Jaar',
              'InOngemakkelijkeWerkhoudingWerken_20':'Percentage werknemers<br>dat in een ongemakkelijke<br>werkhouding werkt',
              'TijdensWerkRepeterendeBewegingMaken_21':'Percentage werknemers dat tijdens het werk repeterende bewegingen maakt',
              'UurPerDagAanBeeldschermVoorWerk_22':'Gemiddeld aantal schermuren voor werk'}
-header = st.beta_container()
+st.container()
 st.header('Visualisatie van de data')
 
 fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
