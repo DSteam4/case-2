@@ -597,7 +597,7 @@ labeldict_breaks = {'Perioden':'Jaar',
              'InOngemakkelijkeWerkhoudingWerken_20':'Percentage werknemers<br>dat in een ongemakkelijke<br>werkhouding werkt',
              'TijdensWerkRepeterendeBewegingMaken_21':'Percentage werknemers dat tijdens het werk repeterende bewegingen maakt',
              'UurPerDagAanBeeldschermVoorWerk_22':'Gemiddeld aantal schermuren voor werk'}
-
+header = st.beta_container()
 st.header('Visualisatie van de data')
 
 fig = px.box(data_frame = df_beroep_segklas, x = 'Perioden', y = 'ZiekteverzuimpercentageWerknemers_1',
@@ -773,7 +773,7 @@ for i in fysiekearbeid:
     j += 1
 
 fig2.update_traces(texttemplate='%{text:.1f}', textposition='outside')
-fig2.update_layout({'updatemenus':[{'active':True, 'showactive':True, 'buttons': dropdown_buttons,
+fig2.update_layout({'updatemenus':[{'active':True, 'buttons': dropdown_buttons,
                                    'x': 1, 'y': 1.2}]},
                   annotations = [{'text':"Fysiekse arbeidsbelasting", 'font_size':15,
                                 'x': 1, 'xref':"paper", 'y':1.3, 'yref':"paper",
