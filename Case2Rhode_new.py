@@ -844,7 +844,7 @@ fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
 fig.update_layout(legend_title = 'Beroepsklassen',
-                 height = 800)
+                 height = 500)
 
 st.plotly_chart(fig)
 
