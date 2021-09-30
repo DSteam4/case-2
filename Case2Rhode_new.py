@@ -719,17 +719,7 @@ Een andere opvallende situatie doet zich voor wanneer we 2019 vergelijken met 20
 # Tussen de beroepsklasse staat nu geen '02 Creatieve en taalkundige beroepen' meer, omdat deze geen specifieke beroepen bevatten in de dataset.
 # <font color = 'red'> Hierdoor komen de kleuren niet overeen met de kleuren van het vorige plaatje in de legenda.
 
-fig = px.scatter(data_frame = df_beroepsklasse, x = 'UurPerDagAanBeeldschermVoorWerk_22', y = 'ZiekteverzuimpercentageWerknemers_1', 
-            color = 'Beroep')
 
-fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
-fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
-                 title = 'Ziekteverzuimpercentage')
-fig.update_layout(legend_title = 'verhouding schermcontact en ziekteverzuim')
-
-st.plotly_chart(fig)
-
-st.markdown('''In bovenstaande grafiek is te zien dat het percentage ziekteverzuim heel geclusterd is bij een laag aantal uren. Des te meer het aantal uren dat het personeel naar een scherm kijkt toeneemt, des te meer het ziekteverzuim tot het toppunt van ± 4 uur. Alhoewel we zien dat het ziekteverzuimpercentage nogal van elkaar kan afwijken, en er zowel beroepsgroepen zijn die uitschieten ten opzichte van de overige beroepsgroepen. Naarmate het personeel meer dan ± 4 uur schermtijd heeft, daalt het ziekteverzuim en clustert het zich meer.''')
 # In[ ]:
 
 
@@ -802,8 +792,22 @@ st.plotly_chart(fig2)
 df_groupby_beroep = df_beroep_segklas.groupby(['Beroep', 'Beroepssegment', 'Beroepsklasse']).mean()
 df_transpose = df_groupby_beroep.transpose()
 df_transpose.head()
-st.markdown(''' In de laatste barplot is de fysieke arbeidsbelasting per gevaar per beroepsklasse te zien. Door middel van de dropdown box is per gevaar te zien welke gevaar een hoog of laag arbeidsbelasting percentage heeft. Bij de eerste elf gevaren blijkt dat Agrarische, Technische en Logistieke beroepen een hoog percentage scoren. Uit de overige gevaren blijkt dat vaak specifieke beroepen een hoog percentage scoren.  Zo is de kans dat iemand van zorg en welzijn het snelst in contact komt met een besmet persoon het hoogst.  
+st.markdown('''In deze barplot is de fysieke arbeidsbelasting per gevaar per beroepsklasse te zien. Door middel van de dropdown box is per gevaar te zien welke gevaar een hoog of laag arbeidsbelasting percentage heeft. Bij de eerste elf gevaren blijkt dat Agrarische, Technische en Logistieke beroepen een hoog percentage scoren. Uit de overige gevaren blijkt dat vaak specifieke beroepen een hoog percentage scoren.  Zo is de kans dat iemand van zorg en welzijn het snelst in contact komt met een besmet persoon het hoogst.  
 Tussen alle fysieke arbeidsbelasting variabelen zit twee keer de variabele ‘Percentage werknemers dat gevaarlijk werk uitvoert’. Eén keer tot 2018 en één keer vanaf 2018. Dit komt omdat de informatie tot 2018 op een andere manier is verkregen dan daarna. Te zien is dat het gemiddelde percentage vanaf 2018 hoger ligt dan het gemiddelde percentage tot 2018. Een mogelijke oorzaak zou kunnen zijn dat tot 2018 mensen met de hand konden aangeven of ze een gevaarlijk beroep uit voerden. Terwijl het vanaf 2018 zo was dat als men 1 van de 10 gevaren aanvinkte het automatisch viel onder gevaarlijk beroep.''')
+
+fig = px.scatter(data_frame = df_beroepsklasse, x = 'UurPerDagAanBeeldschermVoorWerk_22', y = 'ZiekteverzuimpercentageWerknemers_1', 
+            color = 'Beroep')
+
+fig.update_xaxes(title = 'Uren per dag achter beeldscherm')
+fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
+                 title = 'Ziekteverzuimpercentage')
+fig.update_layout(legend_title = 'Verhouding schermuren en ziekteverzuim')
+
+st.plotly_chart(fig)
+
+st.markdown('''De variabele met betrekking tot het aantal schermuren per dag is, in tegenstelling tot de andere variabelen van de dataset *Fysieke arbeidsbelasting*, niet gegeven in percentages maar in uren. Daarom onderzoeken we deze variabele op een andere manier.  
+
+In bovenstaande grafiek is te zien dat het percentage ziekteverzuim heel geclusterd is bij een laag aantal schermuren. Des te meer het aantal uren dat het personeel naar een scherm kijkt toeneemt, des te meer het ziekteverzuim tot het toppunt van ± 4 uur. Alhoewel we zien dat het ziekteverzuimpercentage nogal van elkaar kan afwijken, en er zowel beroepsgroepen zijn die uitschieten ten opzichte van de overige beroepsgroepen. Naarmate het personeel meer dan ± 4 uur schermtijd heeft, daalt het ziekteverzuim en clustert het zich meer.''')
 
 st.header('Conclusie')
 
