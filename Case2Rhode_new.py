@@ -109,9 +109,11 @@ code2 = '''df_merged = ziekteverzuim.merge(fysiekearbeidsbelasting,
 st.code(code2, language = 'python')
             
 st.subheader('Kwaliteit van de dataset')
-st.markdown('''De dataset ziekteverzuim bevat data van het jaar 2014 tot het jaar 2021. De dataset is ontstaan uit een enquête. Deze dataset is gecombineerd met de dataset fysieke arbeidsbelasting werknemers. Dit is gedaan op de variabelen beroep en perioden. De dataset fysieke arbeidsbelasting komt net als de andere dataset uit 2014 tot 2020. Er is middels een enquête informatie gewonnen. ''')
+st.markdown('''De data uit de datasets zijn gewonnen middels enquêtes die zijn ingevuld door werknemers. Enquêtes worden vaak vrij subjectief ingevuld en zijn dus niet de betrouwbaarste bronnen om feitelijke gegevens te verzamelen. Hier moeten we rekening mee houden bij het trekken van conclusies.  
+
+            In beide dataset zijn missende waarden te vinden, maar vooral de dataset fysieke arbeidsbelasting bevat veel missende waarden. We kiezen ervoor deze niet te verwijderen, maar er rekening mee te houden dat het ontbreken van bepaalde gegevens kan leiden tot onzekere conclusies.''')
 st.subheader('Variabelen uit de dataset')
-st.markdown('''De belangrijke variabelen in deze datasets zijn Beroep, Perioden en Ziekteverzuimpercentage. De variabele beroep zijn ingedeeld in beroepsklasse. Die klasse zijn weer in gedeeld in beroepssegment en dat per beroep. De perioden zijn ingedeeld in jaren.  Het ziekteverzuimpercentage is het aantal ziektedagen die een werknemer heeft opgenomen in procenten van het totaal aantal beschikbare werkdagen. ''')
+st.markdown('''De datasets bevatten data van het jaar 2014 tot het jaar 2021. De belangrijke variabelen in deze datasets zijn Beroep, Perioden en Ziekteverzuimpercentage. De variabele beroep zijn ingedeeld in beroepsklasse. Die klasse zijn weer in gedeeld in beroepssegment en dat per beroep. De perioden zijn ingedeeld in jaren.  Het ziekteverzuimpercentage is het aantal ziektedagen die een werknemer heeft opgenomen in procenten van het totaal aantal beschikbare werkdagen. ''')
 
 # Functie get_odata wordt gedefinieerd.  
 # Credits: https://www.cbs.nl/nl-nl/onze-diensten/open-data/open-data-v4/snelstartgids-odata-v4
