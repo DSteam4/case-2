@@ -5,12 +5,11 @@
 
 project_title = 'Blogpost_ziekteverzuim'
 
-{
-    "primaryColor": "someColor1"
-    "backgroundColor": "someColor3",
-    "secondaryBackgroundColor": "someColor4",
-    "textColor": "someColor5",
-    "font": "someFont",
+{"primaryColor" : "someColor1"
+ "backgroundColor" : "someColor3",
+ "secondaryBackgroundColor" : "someColor4",
+ "textColor" : "someColor5",
+ "font" : "someFont",
 }
 
 # Namen: Vincent Kemme (500838439), Rhodé Rebel (500819128), Amber van der Pol (500803136) en Oussama Abou <font color = 'red'>(...)
