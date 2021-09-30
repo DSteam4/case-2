@@ -701,7 +701,7 @@ fig.update_xaxes(title = 'Beroepsklasse')
 fig.update_yaxes(range = [0, df_beroepsklasse['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
 fig.update_layout(legend_title = 'Beroepsklasse',
-                 height = 750)
+                 height = 600)
 
 st.plotly_chart(fig)
 
