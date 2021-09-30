@@ -46,10 +46,6 @@ warnings.filterwarnings('ignore')
 import session_info
 session_info.show()
 
-[
-theme
-]
-
 # Primary accent for interactive elements
 primaryColor = '#7792E3'
 
