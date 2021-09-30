@@ -739,7 +739,7 @@ fig = px.scatter(data_frame = df_beroep_segklas, x = 'Beroep', y = 'Ziekteverzui
 fig.update_xaxes(showticklabels=False)
 fig.update_yaxes(range = [0, df_beroep_segklas['ZiekteverzuimpercentageWerknemers_1'].max() + 0.5],
                  title = 'Ziekteverzuimpercentage')
-fig.update_layout(height = 550)
+fig.update_layout(height = 520)
 
 st.plotly_chart(fig)
 
@@ -865,5 +865,5 @@ Kijkend naar de specifieke fysieke belasting van beroepsklassen zien we dat Tech
 
 Als laatste onderzocht is het aantal schermuren per dag. Bij lage uren is het erg geclusterd rond het gemiddelde, daarna lijkt het te stijgen tot je over de 4 uur per dag bereikt, dan zakt het ineens in naar onder gemiddeld ziekteverzuim. 
 
-We hadden in deze data verwacht dat de coronacrisis duidelijk meer ziekteverzuim zou tonen, maar dat is tot nu toe niet tot amper het geval. We kunnen enkel speculeren over enkele losse pieken van de data. Verwacht wordt dat als er een aantal extra jaren mee worden genomen vanuit het verleden maar ook van 2021 dat dit beter te zien is. Meer datapunten geven namelijk meer duidelijkheid, en 2021 heeft natuurlijk grote invloed gehad van het coronavirus. 
+We hadden in deze data verwacht dat de coronacrisis duidelijk meer ziekteverzuim zou tonen, maar dat is tot nu toe niet tot amper het geval. We kunnen enkel speculeren over enkele losse pieken van de data. Verwacht wordt dat als er een aantal extra jaren mee worden genomen vanuit het verleden maar ook van 2021 dat dit beter te zien is. Meer datapunten geven namelijk meer duidelijkheid, en 2021 heeft natuurlijk grote invloed gehad van het coronavirus. Verder is er maar 1 variabele van het ziekteverzuim gebruikt, namelijk ziekteverzuimpercentage. In een uitgebreider onderzoek kunnen uit de andere variabelen ook nog nieuwe inzichten komen.
 ''')
