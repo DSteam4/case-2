@@ -853,4 +853,15 @@ In bovenstaande grafiek is te zien dat het percentage ziekteverzuim heel geclust
 
 st.header('Conclusie')
 
+st.markdown('''Het verband tussen ziekteverzuim en arbeidsbelasting komt dus inderdaad voor. Bij bepaalde beroepsklassen ligt het ziekteverzuim veel hoger dan bij anderen. Er is een zwakke correlatie tussen het ziekteverzuimpercentage en zwaar of ongemakkelijk werken in het algemeen, en als dit verder onderzocht wordt zien we ten eerste dat Openbaar bestuur, veiligheid en justitie en Zorg en welzijn beroepen een hoger ziekteverzuimpercentage hebben dan de rest. Managers en ICT beroepen hebben dan weer een veel lager ziekteverzuim dan gemiddeld. 
 
+Door de jaren heen is er ook een lichte stijging. Als alle beroepen bij elkaar gegroepeerd zijn is dit al te zien maar ook als we per beroep door de jaren heen kijken zien we dat de trend is dat de datapunten langzaam omhooggaan. Verder wordt de spreiding van de datapunten ook hoger in latere jaren. 
+
+Per beroep kijkend naar de laatste twee jaar zien we dat er bij Algemeen Directeuren amper ziekteverzuim is, net boven de 1%. Buschauffeurs en Trambestuurders daarentegen hebben in 2019 de hoogste uitval. In 2020 zijn dit de hulpkrachten in bouw en industrie. Opvallend genoeg vallen deze twee beroepen niet onder dezelfde beroepsklasse. 
+
+Kijkend naar de specifieke fysieke belasting van beroepsklassen zien we dat Technische Beroepen er vaak bovenuit springen met gevaarlijke situaties. Dit zou dus zorgen voor het ziekteverzuim binnen deze beroepsklasse. Mensen met een beroep in de Zorg en Welzijn klasse hebben dan juist het gevaar dat ze het snelt in contact kunnen komen met een besmet persoon, wat natuurlijk de kans op ziekteverzuim verhoogt.  
+
+Als laatste onderzocht is het aantal schermuren per dag. Bij lage uren is het erg geclusterd rond het gemiddelde, daarna lijkt het te stijgen tot je over de 4 uur per dag bereikt, dan zakt het ineens in naar onder gemiddeld ziekteverzuim. 
+
+We hadden in deze data verwacht dat de coronacrisis duidelijk meer ziekteverzuim zou tonen, maar dat is tot nu toe niet tot amper het geval. We kunnen enkel speculeren over enkele losse pieken van de data. Verwacht wordt dat als er een aantal extra jaren mee worden genomen vanuit het verleden maar ook van 2021 dat dit beter te zien is. Meer datapunten geven namelijk meer duidelijkheid, en 2021 heeft natuurlijk grote invloed gehad van het coronavirus. 
+''')
