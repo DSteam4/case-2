@@ -69,17 +69,6 @@ arr_map_structure  = [os.getcwd() + map for map in   ['/Data','/Data/raw','/Data
 
 
 # # 2 Import data
-def main():
-    menu = ["Inleiding", "Analyse van de data", "Visualisatie van de data"]
-    choice = st.sidebar.selectbox("Menu", menu)
-    if choice == 'Inleiding':
-        st.subheader('Inleiding')
-    elif choice == 'Analyse van de data':
-        st.subheader('Analyse van de data')
-    else:
-        st.subheader('Visualisatie van de data')
-if __name__== '__main__':
-  main()
         
 st.header("Analyse van de data")
 st.markdown('''Om te onderzoeken hoe de ziekteverzuim verdeeld is per beroepsklasse is er gebruikt gemaakt van de data van het CBS. Er is gebruik gemaakt van de volgende twee datasets: *ziekteverzuim volgens werknemers; beroep* en *fysieke arbeidsbelasting werknemers; beroep*. Dit zijn twee openbare API’s die we hebben opgevraagd:  
